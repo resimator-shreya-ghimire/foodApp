@@ -1,0 +1,72 @@
+ [
+  {
+    "id": 1,
+    "name": "Margherita Pizza",
+    "category": "Italian",
+    "price": 899,
+    "isVegetarian": true
+  },
+  {
+    "id": 2,
+    "name": "Cheeseburger",
+    "category": "American",
+    "price": 649,
+    "isVegetarian": false
+  },
+  {
+    "id": 3,
+    "name": "Sushi Platter",
+    "category": "Japanese",
+    "price": 1499,
+    "isVegetarian": false
+  },
+  {
+    "id": 4,
+    "name": "Veggie Salad Bowl",
+    "category": "Healthy",
+    "price": 599,
+    "isVegetarian": true
+  },
+  {
+    "id": 5,
+    "name": "Chicken Biryani",
+    "category": "Indian",
+    "price": 1049,
+    "isVegetarian": false
+  },
+  {
+    "id": 6,
+    "name": "Pad Thai",
+    "category": "Thai",
+    "price": 929,
+    "isVegetarian": false
+  },
+  {
+    "id": 7,
+    "name": "Falafel Wrap",
+    "category": "Middle Eastern",
+    "price": 779,
+    "isVegetarian": true
+  },
+  {
+    "id": 8,
+    "name": "Chocolate Cake",
+    "category": "Dessert",
+    "price": 499,
+    "isVegetarian": true
+  },
+  {
+    "id": 9,
+    "name": "Grilled Salmon",
+    "category": "Seafood",
+    "price": 1399,
+    "isVegetarian": false
+  },
+  {
+    "id": 10,
+    "name": "Taco Trio",
+    "category": "Mexican",
+    "price": 749,
+    "isVegetarian": false
+  }
+]
