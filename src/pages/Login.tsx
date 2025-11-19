@@ -4,8 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from "../auth/auth.tsx";
 import { loginFormSchema } from "../Validations.tsx";
 import { yupResolver } from "@hookform/resolvers/yup";
-import InputField from "../components/FormComponents/Input/InputField.tsx";
-import Button from "../components/FormComponents/Button/Button";
+import InputField from "../components/FormComponents/InputField.tsx";
+import Button from "../components/FormComponents/Button.tsx";
 
 type LoginForm = {
   email: string;
@@ -29,6 +29,10 @@ const Login = () => {
     navigate('/');
   };
 
+  const emailValue = methods.watch("email");
+  const passwordValue = methods.watch("password");
+  const disableButton = !(emailValue && String(emailValue).trim() && passwordValue && String(passwordValue).trim());
+
   return (
     <div className="h-screen flex items-center justify-center bg-[linear-gradient(to_right,#ec2F4B,#009FFF)]">
       <FormProvider {...methods}>
@@ -43,7 +47,7 @@ const Login = () => {
             placeholder="Enter your password"
           />
           <div className="mt-4">
-            <Button label="Login" type="submit" buttonType="primary" />
+            <Button label="Login" type="submit" buttonType="primary" disabled={disableButton} loading={methods.formState.isSubmitting} />
           </div>
         </form>
       </FormProvider>

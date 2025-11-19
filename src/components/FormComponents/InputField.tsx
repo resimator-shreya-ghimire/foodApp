@@ -5,6 +5,7 @@ interface InputFieldProps {
   fieldname: string;
   label: string;
   placeholder: string;
+
 }
 
 const InputField: React.FC<InputFieldProps> = ({ fieldname, label, placeholder }) => {

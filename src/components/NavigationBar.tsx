@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from "../auth/auth.tsx";
-
+import Button from './FormComponents/Button.tsx';
 const NavigationBar = () => {
   const { logout } = useAuth();
 
@@ -17,8 +17,8 @@ const NavigationBar = () => {
 
         <nav aria-label="Main Navigation">
           <ul className="hidden sm:flex gap-6 items-center text-gray-700">
-            <li>
-              <button className="text-sm px-3 py-1 rounded-md bg-blue-50 text-blue-600 hover:bg-blue-100" onClick={handleLogout}>Logout</button>
+            <li>   
+              <Button label="Logout" buttonType="delete" onClick={handleLogout} />
             </li>
           </ul>
         </nav>
