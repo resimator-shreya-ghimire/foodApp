@@ -1,15 +1,11 @@
-import { useFormContext } from "react-hook-form"
 import {useState} from "react"
-
-interface InputFieldProps {
-  fieldname: string;
-  label: string;
-  placeholder: string;
-
-}
+import { useFormContext } from "react-hook-form"
+import type { InputFieldProps } from "./formComponent.data"
 
 const InputField: React.FC<InputFieldProps> = ({ fieldname, label, placeholder }) => {
+
   const { register, formState: { errors }, trigger } = useFormContext();
+
   const [showPassword, setShowPassword] = useState(false);
 
   return (

@@ -1,11 +1,11 @@
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from "../auth/auth.tsx";
-import Button from './FormComponents/Button.tsx';
+import { useAuth } from "../../auth/auth.tsx";
+import Button from '../form-component/Button.tsx';
+
 const NavigationBar = () => {
   const { logout } = useAuth();
 
   const navigate = useNavigate();
-
   const handleLogout=()=>{
     logout();
     navigate('/login');

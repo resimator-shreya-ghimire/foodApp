@@ -1,5 +1,6 @@
-import FoodList from "../components/FoodList"
-import NavigationBar from "../components/NavigationBar"
+import FoodList from "../components/layout-component/FoodList"
+import Footer from "../components/layout-component/Footer"
+import NavigationBar from "../components/layout-component/NavigationBar"
 
 
 const Home = () => {
@@ -7,6 +8,7 @@ const Home = () => {
     <div className=" h-[100vh]">
       <NavigationBar />
       <FoodList />
+      <Footer>Welcome to MyFoodApp!</Footer>
     </div>
   )
 }

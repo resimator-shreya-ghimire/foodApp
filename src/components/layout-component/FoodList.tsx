@@ -1,10 +1,13 @@
 import { useState, useEffect } from "react";
 import { useDebounce } from "@uidotdev/usehooks";
-import FoodListItem from "./FoodListItem";
-import type { Food } from "./foot.data";
-import { getProductList } from "../mockDataApi/mockApi";
+import Card from "./Card";
+import type { Food } from "./layout.data";
+import { getProductList } from "../../api/mockapi";
+import { useNavigate } from "react-router-dom";
+import Button from "../form-component/Button";
 
 const FoodList = () => {
+    const navigate = useNavigate();
     const [filteredFoods, setFilteredFoods] = useState<Food[]>([]);
     const [searchTerm, setSearchTerm] = useState<string>('');
     const [loading, setLoading] = useState<boolean>(true);
@@ -19,6 +22,18 @@ const FoodList = () => {
             console.error("Error fetching product list:", error);
         });
     }, []);
+
+    const actions=()=>{
+        return(
+            <>
+                <Button label="Add to Cart" buttonType="add" onClick={() => {}} />
+            </>
+        )
+    }
+
+    const handleCardClick = (id: number) => {
+        navigate(`/food/${id}`);
+    }
 
     useEffect(() => {
         if (debouncedSearchTerm) {
@@ -49,7 +64,16 @@ const FoodList = () => {
                     <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
                         {filteredFoods.length > 0 ? (
                             filteredFoods.map((food) => (
-                                <FoodListItem key={food.id} food={food} />
+                                <Card
+                                    key={food.id}
+                                    Title={food.name}
+                                    image={food.image}
+                                    description={food.description}
+                                    price={food.price}
+                                    onClick={() => handleCardClick(food.id)}
+                                    actions={actions()}
+        
+                                />
                             ))
                         ) : (
                             <p>No foods found.</p>

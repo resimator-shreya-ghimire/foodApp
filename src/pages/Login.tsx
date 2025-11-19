@@ -2,10 +2,10 @@
 import { useForm, FormProvider } from "react-hook-form";
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from "../auth/auth.tsx";
-import { loginFormSchema } from "../Validations.tsx";
+import { loginFormSchema } from "../utils/validations.ts";
 import { yupResolver } from "@hookform/resolvers/yup";
-import InputField from "../components/FormComponents/InputField.tsx";
-import Button from "../components/FormComponents/Button.tsx";
+import InputField from "../components/form-component/InputField.tsx";
+import Button from "../components/form-component/Button.tsx";
 
 type LoginForm = {
   email: string;

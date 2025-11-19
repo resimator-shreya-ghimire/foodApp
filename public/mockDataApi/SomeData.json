@@ -1,88 +1,123 @@
- [
+[
   {
     "id": 1,
     "name": "Margherita Pizza",
-    "image": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.istockphoto.com%2Fphotos%2Fpepperoni-pizza&psig=AOvVaw0x6dZ_xxipEdlcgyV3NrK_&ust=1763614280064000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCPDEz6i1_ZADFQAAAAAdAAAAABAE",
-    "description": "Classic pizza with fresh tomatoes, mozzarella cheese, and basil.longer text to test overflow handling in the UI component.more text to test overflow handling in the UI component.",
+    "image": "https://images.unsplash.com/photo-1601924638867-3ec4d93e5c0c",
+    "description": "Classic pizza with fresh tomatoes, mozzarella cheese, and basil.",
     "category": "Italian",
     "price": 899,
     "isVegetarian": true,
     "rating": 4.5,
-    "reviews":[{
-      "user": "JohnDoe",
-      "comment": "Delicious pizza! The crust was perfect and the toppings were fresh.",
-      "rating": 5
-    },
-    {
-      "user": "JaneSmith",
-      "comment": "Good pizza but could use more basil.",
-      "rating": 4
-    }]
+    "reviews": [
+      {
+        "user": "JohnDoe",
+        "comment": "Delicious pizza! The crust was perfect and the toppings were fresh.",
+        "rating": 5
+      },
+      {
+        "user": "JaneSmith",
+        "comment": "Good pizza but could use more basil.",
+        "rating": 4
+      }
+    ]
   },
   {
     "id": 2,
     "name": "Cheeseburger",
+    "image": "https://images.unsplash.com/photo-1550547660-d9450f859349",
     "description": "Juicy cheeseburger with lettuce, tomato, and pickles.",
     "category": "American",
     "price": 649,
-    "isVegetarian": false
+    "isVegetarian": false,
+    "rating": 4.2,
+    "reviews": []
   },
   {
     "id": 3,
     "name": "Sushi Platter",
+    "image": "https://images.unsplash.com/photo-1544378730-aca6e0c52a48",
     "description": "Assorted sushi platter with fresh fish and vegetables.",
     "category": "Japanese",
     "price": 1499,
-    "isVegetarian": false
+    "isVegetarian": false,
+    "rating": 4.7,
+    "reviews": []
   },
   {
     "id": 4,
     "name": "Veggie Salad Bowl",
+    "image": "https://images.unsplash.com/photo-1556910103-1c02745aae4d",
     "description": "A fresh and healthy salad bowl with a variety of vegetables.",
     "category": "Healthy",
     "price": 599,
-    "isVegetarian": true
+    "isVegetarian": true,
+    "rating": 4.4,
+    "reviews": []
   },
   {
     "id": 5,
     "name": "Chicken Biryani",
+    "image": "https://images.unsplash.com/photo-1604909052777-088f3d4be0f5",
+    "description": "Aromatic basmati rice cooked with tender chicken and Indian spices.",
     "category": "Indian",
     "price": 1049,
-    "isVegetarian": false
+    "isVegetarian": false,
+    "rating": 4.6,
+    "reviews": []
   },
   {
     "id": 6,
     "name": "Pad Thai",
+    "image": "https://images.unsplash.com/photo-1621996346565-5d05f9b0a7f2",
+    "description": "Stir-fried rice noodles with tofu, shrimp, peanuts, and tamarind sauce.",
     "category": "Thai",
     "price": 929,
-    "isVegetarian": false
+    "isVegetarian": false,
+    "rating": 4.3,
+    "reviews": []
   },
   {
     "id": 7,
     "name": "Falafel Wrap",
+    "image": "https://images.unsplash.com/photo-1604908177376-f1d3f5e3c0c1",
+    "description": "Crispy falafel wrapped with hummus, vegetables, and tahini sauce.",
     "category": "Middle Eastern",
     "price": 779,
-    "isVegetarian": true
+    "isVegetarian": true,
+    "rating": 4.4,
+    "reviews": []
   },
   {
     "id": 8,
     "name": "Chocolate Cake",
+    "image": "https://images.unsplash.com/photo-1578985545062-69928b1d9587",
+    "description": "Rich and moist chocolate cake topped with creamy frosting.",
     "category": "Dessert",
     "price": 499,
-    "isVegetarian": true
+    "isVegetarian": true,
+    "rating": 4.8,
+    "reviews": []
   },
   {
     "id": 9,
     "name": "Grilled Salmon",
+    "image": "https://images.unsplash.com/photo-1553621042-f6e147245754",
+    "description": "Fresh salmon grilled to perfection with herbs and lemon.",
     "category": "Seafood",
     "price": 1399,
-    "isVegetarian": false
+    "isVegetarian": false,
+    "rating": 4.6,
+    "reviews": []
   },
   {
     "id": 10,
     "name": "Taco Trio",
+    "image": "https://images.unsplash.com/photo-1601924757224-bf3c2c0f94a6",
+    "description": "Three flavorful tacos filled with meat, salsa, and toppings.",
     "category": "Mexican",
     "price": 749,
-    "isVegetarian": false
+    "isVegetarian": false,
+    "rating": 4.2,
+    "reviews": []
   }
 ]
