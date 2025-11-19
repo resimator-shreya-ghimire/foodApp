@@ -1,13 +1,14 @@
 import { useParams } from 'react-router-dom';
+import NavigationBar from '../components/NavigationBar';
 
 const FoodDetails = () => {
   const { id } = useParams();
-
   
-
   return (
-    <div>FoodDetails</div>
+    <div>
+      <NavigationBar />
+    </div>
   )
 }
 
-export default FoodDetails
+export default FoodDetails;

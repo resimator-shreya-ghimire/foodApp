@@ -1,8 +1,10 @@
 
-import { useState } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, FormProvider } from "react-hook-form";
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from "../auth/auth.tsx";
+import { loginFormSchema } from "../Validations.tsx";
+import { yupResolver } from "@hookform/resolvers/yup";
+import InputField from "../components/FormComponents/Input/InputField.tsx";
 
 type LoginForm = {
   email: string;
@@ -12,13 +14,13 @@ type LoginForm = {
 const Login = () => {
   const navigate = useNavigate();
   const { login } = useAuth();
-  const [showPassword, setShowPassword] = useState(false);
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<LoginForm>({ mode: "onBlur" });
+  const methods = useForm({
+    resolver: yupResolver(loginFormSchema),
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+  });
 
   const onSubmit = (data: LoginForm) => {
     const token = Math.random().toString(36).slice(2);
@@ -28,67 +30,20 @@ const Login = () => {
 
   return (
     <div className="h-screen flex items-center justify-center bg-[linear-gradient(to_right,#ec2F4B,#009FFF)]">
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className="w-[92%] max-w-md bg-white/30 p-8 rounded-md shadow-xl border border-white/100"
-      >
-
-        <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
-          <input
-            type="email"
-            placeholder="you@example.com"
-            className={`w-full px-4 py-2 rounded-md border focus:outline-none focus:ring-2 focus:ring-blue-400 ${errors.email ? "border-red-400" : "border-white"}`}
-            {...register("email", {
-              required: "Email is required.",
-              pattern: {
-                value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-                message: "Please enter a valid email address.",
-              },
-            })}
-          />
-          {errors.email && (
-            <p className="text-sm text-red-600 mt-1">{errors.email.message}</p>
-          )}
-        </div>
-
-        <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700 mb-1">Password</label>
-          <div className="relative">
-            <input
-              type={showPassword ? "text" : "password"}
-              placeholder="Your password"
-              className={`w-full px-4 py-2 rounded-md border focus:outline-white-1 focus:ring-2 focus:ring-blue-400 ${errors.password ? "border-red-400" : "border-white"}`}
-              {...register("password", {
-                required: "Password is required.",
-                minLength: { value: 8, message: "Password must be at least 8 characters long." },
-                pattern: {
-                  value: /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]+$/,
-                  message: "Password must contain at least one number and one special character.",
-                },
-              })}
-            />
-
-            <button
-              type="button"
-              onClick={() => setShowPassword((s) => !s)}
-              className="absolute right-2 top-1/2 -translate-y-1/2 text-sm text-gray-600 hover:text-gray-800"
-            >
-              {showPassword ? "Hide" : "Show"}
-            </button>
-          </div>
-          {errors.password && (
-            <p className="text-sm text-red-600 mt-1">{errors.password.message}</p>
-          )}
-        </div>
-
-        <button
-          type="submit"
-          className="w-full border-1 border-blue-500 text-blue-500 py-2 rounded-md font-medium hover:bg-white transition"
+      <FormProvider {...methods}>
+        <form
+          onSubmit={methods.handleSubmit(onSubmit)}
+          className="w-[92%] max-w-md bg-white/30 p-8 rounded-md shadow-xl border border-white/100"
         >
-          Login
-        </button>
-      </form>
+          <InputField fieldname="email" label="Email" placeholder="Enter your email" />
+          <InputField
+            fieldname="password"
+            label="Password"
+            placeholder="Enter your password"
+          />
+          
+        </form>
+      </FormProvider>
     </div>
   );
 };

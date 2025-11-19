@@ -1,45 +1,32 @@
-import { useState, useEffect, useRef } from "react";
-import SomeData from "./SomeData.json";
+import { useState, useEffect } from "react";
+import { useDebounce } from "@uidotdev/usehooks";
 import FoodListItem from "./FoodListItem";
 import type { Food } from "./foot.data";
+import { getProductList } from "../mockDataApi/mockApi";
 
 const FoodList = () => {
     const [filteredFoods, setFilteredFoods] = useState<Food[]>([]);
+    const [searchTerm, setSearchTerm] = useState<string>('');
     const [loading, setLoading] = useState<boolean>(true);
-
+    const debouncedSearchTerm = useDebounce<string>(searchTerm, 300);
 
     useEffect(() => {
-        const fetchData = async () => {
-            return SomeData as unknown as Food[];
-        }
-        fetchData().then((data) => {
+        getProductList().then((data) => {
             setFilteredFoods(data);
             setLoading(false);
         })
-
-         return () => {
-            if (searchTimer.current) {
-                window.clearTimeout(searchTimer.current);
-            }
-        };
+        .catch((error) => {
+            console.error("Error fetching product list:", error);
+        });
     }, []);
-    const searchTimer = useRef<number | null>(null);
 
-    const handleSearchItems = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const searchTerm = event.target.value.toLowerCase();
-
-        if (searchTimer.current) {
-            window.clearTimeout(searchTimer.current);
-        }
-
-        searchTimer.current = window.setTimeout(() => {
-            const filtered = (SomeData as unknown as Food[]).filter((food) =>
-                food.name.toLowerCase().includes(searchTerm) ||
-                food.category.toLowerCase().includes(searchTerm)
-            );
-            setFilteredFoods(filtered as unknown as Food[]);
-        }, 300);
-    };
+    useEffect(() => {
+        if (debouncedSearchTerm) {
+            const lowercasedTerm = debouncedSearchTerm.toLowerCase();
+            setFilteredFoods((prevFoods) =>
+                prevFoods.filter((food) =>
+                    food.name.toLowerCase().includes(lowercasedTerm)) ?? []);
+        }}, [debouncedSearchTerm]);
 
 
     return (
@@ -54,12 +41,12 @@ const FoodList = () => {
                             <input
                                 type="text"
                                 placeholder="Search foods..."
-                                onChange={handleSearchItems}
+                                value={searchTerm}
+                                onChange={(e) => setSearchTerm(e.target.value)}
                             />
                         </div>
-                    </div>
+                     </div>
                     <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
-
                         {filteredFoods.length > 0 ? (
                             filteredFoods.map((food) => (
                                 <FoodListItem key={food.id} food={food} />

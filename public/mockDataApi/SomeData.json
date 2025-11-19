@@ -2,13 +2,27 @@
   {
     "id": 1,
     "name": "Margherita Pizza",
+    "image": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.istockphoto.com%2Fphotos%2Fpepperoni-pizza&psig=AOvVaw0x6dZ_xxipEdlcgyV3NrK_&ust=1763614280064000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCPDEz6i1_ZADFQAAAAAdAAAAABAE",
+    "description": "Classic pizza with fresh tomatoes, mozzarella cheese, and basil.longer text to test overflow handling in the UI component.more text to test overflow handling in the UI component.",
     "category": "Italian",
     "price": 899,
-    "isVegetarian": true
+    "isVegetarian": true,
+    "rating": 4.5,
+    "reviews":[{
+      "user": "JohnDoe",
+      "comment": "Delicious pizza! The crust was perfect and the toppings were fresh.",
+      "rating": 5
+    },
+    {
+      "user": "JaneSmith",
+      "comment": "Good pizza but could use more basil.",
+      "rating": 4
+    }]
   },
   {
     "id": 2,
     "name": "Cheeseburger",
+    "description": "Juicy cheeseburger with lettuce, tomato, and pickles.",
     "category": "American",
     "price": 649,
     "isVegetarian": false
@@ -16,6 +30,7 @@
   {
     "id": 3,
     "name": "Sushi Platter",
+    "description": "Assorted sushi platter with fresh fish and vegetables.",
     "category": "Japanese",
     "price": 1499,
     "isVegetarian": false
@@ -23,6 +38,7 @@
   {
     "id": 4,
     "name": "Veggie Salad Bowl",
+    "description": "A fresh and healthy salad bowl with a variety of vegetables.",
     "category": "Healthy",
     "price": 599,
     "isVegetarian": true

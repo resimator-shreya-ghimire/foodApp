@@ -4,4 +4,6 @@ export type Food = {
   category: string;
   price: number;
   isVegetarian: boolean;
+  image: string;
+  description: string;
 };
