@@ -5,6 +5,7 @@ import { useAuth } from "../auth/auth.tsx";
 import { loginFormSchema } from "../Validations.tsx";
 import { yupResolver } from "@hookform/resolvers/yup";
 import InputField from "../components/FormComponents/Input/InputField.tsx";
+import Button from "../components/FormComponents/Button/Button";
 
 type LoginForm = {
   email: string;
@@ -41,7 +42,9 @@ const Login = () => {
             label="Password"
             placeholder="Enter your password"
           />
-          
+          <div className="mt-4">
+            <Button label="Login" type="submit" buttonType="primary" />
+          </div>
         </form>
       </FormProvider>
     </div>
