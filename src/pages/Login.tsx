@@ -1,11 +1,10 @@
-
 import { useForm, FormProvider } from "react-hook-form";
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from "../auth/auth.tsx";
 import { loginFormSchema } from "../utils/validations.ts";
 import { yupResolver } from "@hookform/resolvers/yup";
-import InputField from "../components/form-component/InputField.tsx";
-import Button from "../components/form-component/Button.tsx";
+import { InputField } from "../components/input/InputField.tsx";
+import { Button } from "../components/button/Button.tsx";
 
 type LoginForm = {
   email: string;
@@ -17,11 +16,14 @@ const Login = () => {
   const { login } = useAuth();
   const methods = useForm({
     resolver: yupResolver(loginFormSchema),
+    mode: "onBlur",
     defaultValues: {
       email: "",
       password: "",
     },
   });
+
+  const { handleSubmit, formState: { isSubmitting, isValid } } = methods;
 
   const onSubmit = (data: LoginForm) => {
     const token = Math.random().toString(36).slice(2);
@@ -29,15 +31,11 @@ const Login = () => {
     navigate('/');
   };
 
-  const emailValue = methods.watch("email");
-  const passwordValue = methods.watch("password");
-  const disableButton = !(emailValue && String(emailValue).trim() && passwordValue && String(passwordValue).trim());
-
   return (
     <div className="h-screen flex items-center justify-center bg-[linear-gradient(to_right,#ec2F4B,#009FFF)]">
       <FormProvider {...methods}>
         <form
-          onSubmit={methods.handleSubmit(onSubmit)}
+          onSubmit={handleSubmit(onSubmit)}
           className="w-[92%] max-w-md bg-white/30 p-8 rounded-md shadow-xl border border-white/100"
         >
           <InputField fieldname="email" label="Email" placeholder="Enter your email" />
@@ -47,7 +45,7 @@ const Login = () => {
             placeholder="Enter your password"
           />
           <div className="mt-4">
-            <Button label="Login" type="submit" buttonType="primary" disabled={disableButton} loading={methods.formState.isSubmitting} />
+            <Button label="Login" type="submit" variant="primary" disabled={!isValid} loading={isSubmitting} />
           </div>
         </form>
       </FormProvider>

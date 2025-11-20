@@ -1,20 +1,29 @@
-import React from "react";
-import type { ButtonProps } from "./formComponent.data";
+type variantTypes = "primary" | "delete" | "add";
+type buttonTypes= "button" | "submit" | "reset";
 
-const Button: React.FC<ButtonProps> = ({
+interface ButtonProps {
+    label: string;
+    type?: buttonTypes;
+    disabled?: boolean;
+    variant?: variantTypes;
+    className?: string;
+    loading?: boolean;
+    onClick?: () => void;
+}
+
+export const Button = ({
     label,
     type = "button",
-    width = 100,
     disabled = false,
-    buttonType = "primary",
+    variant = "primary",
     className = "",
     loading = false,
     onClick = () => {}
-}) => {
+}: ButtonProps) => {
     const buttonClassNames =
-        buttonType === "primary"
+        variant === "primary"
             ? "border border-blue-500 text-blue-500 hover:bg-white hover:text-blue-600"
-            : buttonType === "delete"
+            : variant === "delete"
             ? "bg-red-500 text-white hover:bg-red-600"
             : "bg-green-500 text-white hover:bg-green-600";
 
@@ -26,7 +35,7 @@ const Button: React.FC<ButtonProps> = ({
             type={type}
             disabled={disabled || loading}
             aria-busy={loading}
-            className={`w-full py-2 px-4 rounded-md font-medium transition flex items-center justify-center ${buttonClassNames} ${disabledClasses} ${loadingCursor} ${className} w-[${width}%]`}
+            className={`w-full py-2 px-4 rounded-md font-medium transition flex items-center justify-center ${buttonClassNames} ${disabledClasses} ${loadingCursor} ${className}`}
             onClick={onClick}
         >
             {loading ? (
@@ -37,5 +46,3 @@ const Button: React.FC<ButtonProps> = ({
         </button>
     );
 };
-
-export default Button;

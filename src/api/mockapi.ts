@@ -1,21 +1,20 @@
 import type { Food } from "../App.data";
+import SomeData from './mock-data-api/SomeData.json';
 
-export const getProductList = async (): Promise<Food[]> => {
-    const response = await fetch('/mockDataApi/SomeData.json');
-    const data = await response.json();
-    const items = Array.isArray(data) ? data : [data];
-    return items.map((item: any) => ({
-        id: Number(item.id),
-        name: String(item.name),
-        category: String(item.category),
-        price: Number(item.price),
-        isVegetarian: Boolean(item.isVegetarian),
-        description: String(item.description ?? ''),
-        image: String(item.image ?? ''),
-    }));
+export const getProductList = (): Promise<Food[]> => {
+    return new Promise<Food[]>(async (resolve, reject) => {
+        try {
+            resolve(SomeData);
+        } catch (err) {
+            reject(err);
+        }
+    });
 }
 
-export const getProductById = async (id: number): Promise<Food | undefined> => {
-    const items = await getProductList();
-    return items.find((item) => item.id === id);
+export const getProductById = (id: number): Promise<Food | undefined> => {
+    return new Promise<Food | undefined>((resolve, reject) => {
+        getProductList()
+            .then((items) => resolve(items.find((item) => item.id === id)))
+            .catch(reject);
+    });
 }

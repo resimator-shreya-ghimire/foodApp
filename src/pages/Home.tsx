@@ -1,6 +1,6 @@
-import FoodList from "../components/layout-component/FoodList"
-import Footer from "../components/layout-component/Footer"
-import NavigationBar from "../components/layout-component/NavigationBar"
+import { FoodList } from "../components/product-list/FoodList"
+import Footer from "../components/Footer/Footer"
+import NavigationBar from "../components/header/NavigationBar"
 
 
 const Home = () => {

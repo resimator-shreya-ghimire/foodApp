@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from "../../auth/auth.tsx";
-import Button from '../form-component/Button.tsx';
+import { Button } from '../button/Button.tsx';
 
 const NavigationBar = () => {
   const { logout } = useAuth();
@@ -14,11 +14,10 @@ const NavigationBar = () => {
     <header className="w-full">
       <div className="max-w-6xl mx-auto px-2 py-3 flex items-center justify-between">
         <div className="logo text-xl font-bold text-blue-500">MyFoodApp</div>
-
         <nav aria-label="Main Navigation">
           <ul className="hidden sm:flex gap-6 items-center text-gray-700">
             <li>   
-              <Button label="Logout" buttonType="delete" onClick={handleLogout} />
+              <Button label="Logout" variant="delete" onClick={handleLogout} />
             </li>
           </ul>
         </nav>

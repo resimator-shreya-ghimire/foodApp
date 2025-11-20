@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import NavigationBar from '../components/layout-component/NavigationBar';
+import NavigationBar from '../components/header/NavigationBar';
 
 const FoodDetails = () => {
   const { id } = useParams();
