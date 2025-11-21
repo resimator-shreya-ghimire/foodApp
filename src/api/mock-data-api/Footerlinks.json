@@ -1,0 +1,82 @@
+[
+  {
+    "header": "Company",
+    "fields": [
+      { "name": "About Us", "link": "/about" },
+      { "name": "Careers", "link": "/careers" },
+      { "name": "Blog", "link": "/blog" }
+    ]
+  },
+  {
+    "header": "Support",
+    "fields": [
+      { "name": "Help Center", "link": "/help" },
+      { "name": "Contact Us", "link": "/contact" },
+      { "name": "FAQs", "link": "/faqs" }
+    ]
+  },
+  {
+    "header": "Legal",
+    "fields": [
+      { "name": "Privacy Policy", "link": "/privacy" },
+      { "name": "Terms of Service", "link": "/terms" },
+      { "name": "Cookies Policy", "link": "/cookies" }
+    ]
+  },
+  {
+    "header": "Products",
+    "fields": [
+      { "name": "Pricing", "link": "/pricing" },
+      { "name": "Features", "link": "/features" },
+      { "name": "Integrations", "link": "/integrations" }
+    ]
+  },
+  {
+    "header": "Resources",
+    "fields": [
+      { "name": "Documentation", "link": "/docs" },
+      { "name": "API Reference", "link": "/api" },
+      { "name": "Guides", "link": "/guides" }
+    ]
+  },
+  {
+    "header": "Social",
+    "fields": [
+      { "name": "Twitter", "link": "https://twitter.com" },
+      { "name": "Facebook", "link": "https://facebook.com" },
+      { "name": "Instagram", "link": "https://instagram.com" }
+    ]
+  },
+  {
+    "header": "Community",
+    "fields": [
+      { "name": "Forum", "link": "/forum" },
+      { "name": "Events", "link": "/events" },
+      { "name": "Ambassadors", "link": "/ambassadors" }
+    ]
+  },
+  {
+    "header": "Developers",
+    "fields": [
+      { "name": "Developer Tools", "link": "/dev-tools" },
+      { "name": "Open Source", "link": "/open-source" },
+      { "name": "Changelog", "link": "/changelog" }
+    ]
+  },
+  {
+    "header": "Partners",
+    "fields": [
+      { "name": "Affiliates", "link": "/affiliates" },
+      { "name": "Resellers", "link": "/resellers" },
+      { "name": "Partner Program", "link": "/partners" }
+    ]
+  },
+  {
+    "header": "Contact",
+    "fields": [
+      { "name": "Email Support", "link": "mailto:support@example.com" },
+      { "name": "Live Chat", "link": "/chat" },
+      { "name": "Office Locations", "link": "/locations" }
+    ]
+  }
+]
