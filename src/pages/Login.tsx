@@ -22,7 +22,7 @@ const Login = () => {
     },
   });
 
-  const { handleSubmit, formState: { isSubmitting, isValid } } = methods;
+  const { handleSubmit, formState: { isSubmitting } } = methods;
 
   const onSubmit = (data: LoginForm) => {
     const token = Math.random().toString(36).slice(2);
@@ -31,11 +31,11 @@ const Login = () => {
   };
 
   return (
-    <div className="h-screen flex items-center justify-center bg-[linear-gradient(to_right,#ec2F4B,#009FFF)]">
+    <div className="h-screen flex items-center justify-center bg-textDark">
       <FormProvider {...methods}>
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="w-[92%] max-w-md bg-white/30 p-8 rounded-md shadow-xl border border-white/100"
+          className="w-[92%] max-w-md bg-white/30 p-8 rounded-md shadow-xl border border-white"
         >
           <InputField fieldname="email" label="Email" placeholder="Enter your email" />
           <InputField
@@ -43,9 +43,7 @@ const Login = () => {
             label="Password"
             placeholder="Enter your password"
           />
-          <div className="mt-4">
             <Button label="Login" type="submit" variant="primary"  loading={isSubmitting} />
-          </div>
         </form>
       </FormProvider>
     </div>

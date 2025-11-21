@@ -1,5 +1,15 @@
-import type { Food } from "../App.data";
 import SomeData from './mock-data-api/SomeData.json';
+
+type Food = {
+    id: number;
+    name: string;
+    category: string;
+    price: number;
+    isVegetarian: boolean;
+    description: string;
+    image: string;
+}
+
 
 export const getProductList = (): Promise<Food[]> => {
     return new Promise<Food[]>(async (resolve, reject) => {
