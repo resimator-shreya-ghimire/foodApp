@@ -1,14 +1,14 @@
-export type links={
+type links={
   name:string;
   link:string;
 }
 
-export interface FooterFields{
+type FooterFields={
   header:string;
   fields: links[];
 }
 
-export interface FooterProps {
+type FooterProps= {
     children?: React.ReactNode;
     className?: string;
     copyrightText?: string;

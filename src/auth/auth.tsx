@@ -1,10 +1,10 @@
 import { createContext, useContext, useState} from "react";
 
-export interface User {
+export type User= {
   email: string;
 }
 
-export interface AuthContextType {
+export type AuthContextType= {
   user: User | null;
   token: string | null;
   login: (user: User, token: string) => void;

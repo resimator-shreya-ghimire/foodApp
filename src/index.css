@@ -1,2 +1,95 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+/* 
+//softpeachy delight */
 
+:root {
+  /* ------------------------------------- */
+  /*               COLORS                  */
+  /* ------------------------------------- */
+  --primary-color: #fec5bb;
+  --secondary-color: #fcd5ce;
+  --tertiary-color: #fae1dd;
+
+  --background-color: #f8edeb;
+  --gray-tint: #e8e8e4;
+  --gray-core: #d8e2dc;
+
+  --text-color: rgb(126, 110, 110);
+  --text-dark: rgb(59, 59, 59);
+
+  /* ------------------------------------- */
+  /*               SPACING                 */
+  /* ------------------------------------- */
+  --space-xxs: 2px;
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-xxl: 48px;
+
+  /* Custom */
+  --custom-spacing: 1.5rem;
+
+  /* ------------------------------------- */
+  /*               PADDING                 */
+  /* ------------------------------------- */
+  --padding-xs: 2px;
+  --padding-s: 4px;
+  --padding-m: 8px;
+  --padding-l: 16px;
+  --padding-xl: 24px;
+
+  /* ------------------------------------- */
+  /*               MARGIN                  */
+  /* ------------------------------------- */
+  --margin-xs: 2px;
+  --margin-s: 4px;
+  --margin-m: 8px;
+  --margin-l: 16px;
+  --margin-xl: 24px;
+
+  /* ------------------------------------- */
+  /*           BORDER RADIUS               */
+  /* ------------------------------------- */
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-round: 50%;
+  --radius-pill: 999px;
+
+  /* ------------------------------------- */
+  /*               SHADOWS                 */
+  /* ------------------------------------- */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 6px 12px rgba(0, 0, 0, 0.15);
+
+  /* ------------------------------------- */
+  /*               FONTS                   */
+  /* ------------------------------------- */
+  --font-xs: 0.7rem;
+  --font-sm: 0.85rem;
+  --font-md: 1rem;
+  --font-lg: 1.25rem;
+  --font-xl: 1.5rem;
+  --font-xxl: 2rem;
+
+  /* ------------------------------------- */
+  /*             TRANSITIONS               */
+  /* ------------------------------------- */
+  --transition-fast: 150ms ease-in-out;
+  --transition-normal: 250ms ease;
+  --transition-slow: 400ms ease;
+
+  /* ------------------------------------- */
+  /*             BREAKPOINTS               */
+  /* ------------------------------------- */
+  --break-sm: 480px;
+  --break-md: 768px;
+  --break-lg: 1024px;
+  --break-xl: 1280px;
+}

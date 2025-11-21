@@ -1,6 +1,6 @@
 import { Image } from "../image/Image";
 
-interface CardProps {
+type CardProps = {
   title?: string;
   header?: React.ReactNode | null;
   children?: React.ReactNode | null;

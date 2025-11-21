@@ -2,30 +2,18 @@ import { useState } from "react"
 import { useFormContext } from "react-hook-form"
 import { Error } from "../error/Error";
 
-interface InputFieldProps {
+type InputFieldProps= {
   fieldname: string;
   label?: string;
   value?: string | number;
   placeholder?: string;
   className?: string;
-  isSearch?: boolean;
-  notFormProvider?: boolean;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export const InputField = ({ fieldname, label, value, placeholder, className, isSearch = false, onChange = () => { }, notFormProvider }: InputFieldProps) => {
-  const form = !notFormProvider ? useFormContext() : null;
-
-  const {
-    register = () => ({}),
-    formState: { errors = {} } = {},
-  } = form ?? {};
+export const InputField = ({ fieldname, label, value, placeholder, className}: InputFieldProps) => {
+  const {register, formState: { errors } } = useFormContext() 
 
   const [showPassword, setShowPassword] = useState(false);
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    onChange?.(e);
-  };
 
   return (
     <div className="mb-4">
@@ -37,7 +25,6 @@ export const InputField = ({ fieldname, label, value, placeholder, className, is
             placeholder={placeholder}
             value={value}
             {...register(fieldname)}
-            onChange={handleChange}
             className="w-full h-full px-4 py-2 bg-transparent outline-none appearance-none"
           />
 
@@ -51,15 +38,10 @@ export const InputField = ({ fieldname, label, value, placeholder, className, is
               {showPassword ? "Hide" : "Show"}
             </button>
           )}
-
-          {isSearch && (
-            <i className="bi bi-search text-sm text-gray-600 px-4 "></i>
-          )
-          }
         </div>
       </div>
       {errors[fieldname] && (
-        <Error type="label" message={errors[fieldname]?.message as string} />
+        <Error message={errors[fieldname]?.message as string} />
       )}
     </div>
   );

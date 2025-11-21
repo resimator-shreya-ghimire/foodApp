@@ -2,7 +2,7 @@
   {
     "id": 1,
     "name": "Margherita Pizza",
-    "image": "https://images.unsplash.com/photo-1601924638867-3ec4d93e5c0c",
+    "image": "https://images.pexels.com/photos/220769/pexels-photo-220769.jpeg",
     "description": "Classic pizza with fresh tomatoes, mozzarella cheese, and basil.",
     "category": "Italian",
     "price": 899,
@@ -24,7 +24,7 @@
   {
     "id": 2,
     "name": "Cheeseburger",
-    "image": "https://images.unsplash.com/photo-1550547660-d9450f859349",
+    "image": "https://images.pexels.com/photos/842711/pexels-photo-842711.jpeg",
     "description": "Juicy cheeseburger with lettuce, tomato, and pickles.",
     "category": "American",
     "price": 649,

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from "../auth/auth.tsx";
 import { loginFormSchema } from "../utils/validations.ts";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { InputField } from "../components/input/InputField.tsx";
+import { InputField } from "../components/input/FormInput.tsx";
 import { Button } from "../components/button/Button.tsx";
 
 type LoginForm = {
@@ -16,9 +16,8 @@ const Login = () => {
   const { login } = useAuth();
   const methods = useForm({
     resolver: yupResolver(loginFormSchema),
-    mode: "onBlur",
     defaultValues: {
-      email: "",
+      email: localStorage.getItem('user.email') ?? "",
       password: "",
     },
   });
@@ -45,7 +44,7 @@ const Login = () => {
             placeholder="Enter your password"
           />
           <div className="mt-4">
-            <Button label="Login" type="submit" variant="primary" disabled={!isValid} loading={isSubmitting} />
+            <Button label="Login" type="submit" variant="primary"  loading={isSubmitting} />
           </div>
         </form>
       </FormProvider>

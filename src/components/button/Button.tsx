@@ -1,7 +1,7 @@
 type variantTypes = "primary" | "delete" | "add";
 type buttonTypes= "button" | "submit" | "reset";
 
-interface ButtonProps {
+type ButtonProps ={
     label: string;
     type?: buttonTypes;
     disabled?: boolean;
