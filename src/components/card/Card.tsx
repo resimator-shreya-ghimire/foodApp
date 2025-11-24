@@ -1,4 +1,4 @@
-import { Image } from "../image/Image";
+import { Image } from '../image/Image';
 
 type CardProps = {
   title?: string;
@@ -12,25 +12,26 @@ type CardProps = {
   actions?: React.ReactNode | null;
   hoverEffect?: boolean;
   onClick?: () => void;
-}
+};
 
 export const Card = ({
-  title = "",
+  title = '',
   header = null,
-  image = "",
+  image = '',
   children = null,
-  description = "",
+  description = '',
   price = 0,
-  className = "",
+  className = '',
   actions = null,
   hoverEffect = true,
-  onClick = () => { }
+  onClick = () => {},
 }: CardProps) => {
-
   return (
     <div className={`mb-4 ${className}`}>
-      <div onClick={onClick} className={`bg-white border border-gray-200 rounded-xl shadow-md overflow-hidden transition ${hoverEffect ? "hover:shadow-lg hover:scale-105 hover:cursor-pointer" : ""}`}>
-
+      <div
+        onClick={onClick}
+        className={`bg-white border border-gray-200 rounded-xl shadow-md overflow-hidden transition ${hoverEffect ? 'hover:shadow-lg hover:scale-105 hover:cursor-pointer' : ''}`}
+      >
         {image && (
           <Image
             src={image}
@@ -47,9 +48,7 @@ export const Card = ({
             </h5>
           )}
           {description && (
-            <p className="text-gray-600 mb-4 leading-relaxed ">
-              {description}
-            </p>
+            <p className="text-gray-600 mb-4 leading-relaxed ">{description}</p>
           )}
           {price > 0 && (
             <p className="text-lg font-medium text-gray-800 mb-4">

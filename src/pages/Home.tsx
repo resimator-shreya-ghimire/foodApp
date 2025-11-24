@@ -1,16 +1,15 @@
-import { FoodList } from "../components/product-list/FoodList"
-import Footer from "../components/Footer/Footer"
-import {Header} from "../components/header/Header"
-
+import { FoodList } from '../components/product-list/FoodList';
+import { FooterWrapper } from '../components/Footer/FooterWrapper';
+import { Header } from '../components/header/Header';
 
 const Home = () => {
   return (
     <div className=" h-[100vh]">
       <Header />
       <FoodList />
-      <Footer>Welcome to MyFoodApp!</Footer>
+      <FooterWrapper />
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

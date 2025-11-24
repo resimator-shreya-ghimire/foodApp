@@ -1,10 +1,10 @@
-import { useForm, FormProvider } from "react-hook-form";
+import { useForm, FormProvider } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from "../auth/auth.tsx";
-import { loginFormSchema } from "../utils/validations.ts";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { InputField } from "../components/input/FormInput.tsx";
-import { Button } from "../components/button/Button.tsx";
+import { useAuthStore } from '../auth/auth.tsx';
+import { loginFormSchema } from '../utils/validations.ts';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { InputField } from '../components/input/FormInput.tsx';
+import { Button } from '../components/button/Button.tsx';
 
 type LoginForm = {
   email: string;
@@ -13,20 +13,23 @@ type LoginForm = {
 
 const Login = () => {
   const navigate = useNavigate();
-  const { login } = useAuth();
+  const { login } = useAuthStore();
   const methods = useForm({
     resolver: yupResolver(loginFormSchema),
     defaultValues: {
-      email: localStorage.getItem('user.email') ?? "",
-      password: "",
+      email: localStorage.getItem('user.email') ?? '',
+      password: '',
     },
   });
 
-  const { handleSubmit, formState: { isSubmitting } } = methods;
+  const {
+    handleSubmit,
+    formState: { isSubmitting },
+  } = methods;
 
   const onSubmit = (data: LoginForm) => {
     const token = Math.random().toString(36).slice(2);
-    login({  email: data.email }, token);
+    login({ email: data.email }, token);
     navigate('/');
   };
 
@@ -37,13 +40,22 @@ const Login = () => {
           onSubmit={handleSubmit(onSubmit)}
           className="w-[92%] max-w-md bg-white/30 p-8 rounded-md shadow-xl border border-white"
         >
-          <InputField fieldname="email" label="Email" placeholder="Enter your email" />
+          <InputField
+            fieldname="email"
+            label="Email"
+            placeholder="Enter your email"
+          />
           <InputField
             fieldname="password"
             label="Password"
             placeholder="Enter your password"
           />
-            <Button label="Login" type="submit" variant="primary"  loading={isSubmitting} />
+          <Button
+            label="Login"
+            type="submit"
+            variant="primary"
+            loading={isSubmitting}
+          />
         </form>
       </FormProvider>
     </div>

@@ -1,30 +1,35 @@
 import SomeData from './mock-data-api/SomeData.json';
+import Footerlinks from './mock-data-api/Footerlinks.json';
 
 type Food = {
-    id: number;
-    name: string;
-    category: string;
-    price: number;
-    isVegetarian: boolean;
-    description: string;
-    image: string;
-}
+  id: number;
+  name: string;
+  category: string;
+  price: number;
+  isVegetarian: boolean;
+  description: string;
+  image: string;
+};
 
+export const getProductList = async ({ pageParam = 1 }) => {
+  const limit = 6;
+  const start = (pageParam - 1) * limit;
+  const end = start + limit;
 
-export const getProductList = (): Promise<Food[]> => {
-    return new Promise<Food[]>(async (resolve, reject) => {
-        try {
-            resolve(SomeData);
-        } catch (err) {
-            reject(err);
-        }
-    });
-}
+  const items = SomeData.slice(start, end);
 
-export const getProductById = (id: number): Promise<Food | undefined> => {
-    return new Promise<Food | undefined>((resolve, reject) => {
-        getProductList()
-            .then((items) => resolve(items.find((item) => item.id === id)))
-            .catch(reject);
-    });
-}
+  return {
+    items,
+    nextPage: items.length < limit ? undefined : pageParam + 1,
+  };
+};
+
+export const getFooterList = () => {
+  return new Promise<any[]>(async (resolve, reject) => {
+    try {
+      resolve(Footerlinks);
+    } catch (err) {
+      reject(err);
+    }
+  });
+};

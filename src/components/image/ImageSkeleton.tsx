@@ -1,4 +1,4 @@
-export function ImageSkeleton({ className = "" }: { className?: string }) {
+export function ImageSkeleton({ className = '' }: { className?: string }) {
   return (
     <div
       role="img"

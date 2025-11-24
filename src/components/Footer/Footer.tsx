@@ -1,25 +1,24 @@
-type links={
-  name:string;
-  link:string;
-}
+import type { FooterFields } from './FooterWrapper';
 
-type FooterFields={
-  header:string;
-  fields: links[];
-}
+type FooterProps = {
+  children?: React.ReactNode;
+  className?: string;
+  copyrightText?: string;
+  footerFields?: FooterFields[];
+  sideForm?: React.ReactNode;
+};
 
-type FooterProps= {
-    children?: React.ReactNode;
-    className?: string;
-    copyrightText?: string;
-    footerFields?:FooterFields[];
-    sideForm?: React.ReactNode;
-  }
-
-export const Footer = ({ children, className = "", copyrightText = `© ${new Date().getFullYear()} MyFoodApp`, footerFields=[] }:FooterProps) => {
+export const Footer = ({
+  children,
+  className = '',
+  copyrightText = `© ${new Date().getFullYear()} MyFoodApp`,
+  footerFields = [],
+}: FooterProps) => {
   return (
-    <footer className={`w-full bg-gray-200 text-gray-700 py-6 ${className}`}>
-      <div className="max-w-4xl mx-auto px-4 flex flex-col items-center gap-2">
+    <footer
+      className={`w-full bg-gray-200 text-gray-700 py-6 flex flex-col items-center`}
+    >
+      <div className={`${className}`}>
         {children}
         {footerFields?.length > 0 && (
           <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mb-4">
@@ -39,9 +38,8 @@ export const Footer = ({ children, className = "", copyrightText = `© ${new Dat
             ))}
           </div>
         )}
-
-        <div className="text-sm opacity-80">{copyrightText}</div>
       </div>
+      <div className="text-sm opacity-80 px-5">{copyrightText}</div>
     </footer>
   );
 };

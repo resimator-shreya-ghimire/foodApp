@@ -3,12 +3,12 @@ import NavigationBar from '../components/header/NavigationBar';
 
 const FoodDetails = () => {
   // const { id } = useParams();
-  
+
   return (
     <div>
       <NavigationBar />
     </div>
-  )
-}
+  );
+};
 
 export default FoodDetails;
