@@ -14,13 +14,18 @@ type LoginForm = {
 const Login = () => {
   const navigate = useNavigate();
   const { login } = useAuthStore();
+
+  const userString = localStorage.getItem('user');
+  const user = userString ? JSON.parse(userString) : null; 
+  
   const methods = useForm({
     resolver: yupResolver(loginFormSchema),
     defaultValues: {
-      email: localStorage.getItem('user.email') ?? '',
+      email: user?.email,
       password: '',
     },
   });
+  
 
   const {
     handleSubmit,
