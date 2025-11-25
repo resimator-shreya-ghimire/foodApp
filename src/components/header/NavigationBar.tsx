@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { useAuthStore } from '../../auth/auth.tsx';
+import { useAuthStore } from '../../store/auth.tsx';
 import { Button } from '../button/Button.tsx';
 
 const NavigationBar = () => {
@@ -20,6 +20,12 @@ const NavigationBar = () => {
         <div className="logo text-xl font-weight-500 text-black">Foodyhood</div>
         <nav aria-label="Main Navigation">
           <ul className="hidden sm:flex gap-6 items-center text-gray-700">
+            <li
+              className="hover:text-orange-500 cursor-pointer font-medium"
+              onClick={() => navigate('/cart')}
+            >
+              Cart
+            </li>
             <li>
               <Button label="Logout" variant="delete" onClick={handleLogout} />
             </li>
