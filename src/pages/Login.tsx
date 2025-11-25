@@ -1,6 +1,6 @@
 import { useForm, FormProvider } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { useAuthStore } from '../auth/auth.tsx';
+import { useAuthStore } from '../store/auth.tsx';
 import { loginFormSchema } from '../utils/validations.ts';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { InputField } from '../components/input/FormInput.tsx';
@@ -16,8 +16,8 @@ const Login = () => {
   const { login } = useAuthStore();
 
   const userString = localStorage.getItem('user');
-  const user = userString ? JSON.parse(userString) : null; 
-  
+  const user = userString ? JSON.parse(userString) : null;
+
   const methods = useForm({
     resolver: yupResolver(loginFormSchema),
     defaultValues: {
@@ -25,7 +25,6 @@ const Login = () => {
       password: '',
     },
   });
-  
 
   const {
     handleSubmit,
@@ -39,7 +38,7 @@ const Login = () => {
   };
 
   return (
-    <div className="h-screen flex items-center justify-center bg-textDark">
+    <div className="h-screen flex items-center justify-center bg-primary">
       <FormProvider {...methods}>
         <form
           onSubmit={handleSubmit(onSubmit)}

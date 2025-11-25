@@ -29,8 +29,7 @@ export const Card = ({
   return (
     <div className={`mb-4 ${className}`}>
       <div
-        onClick={onClick}
-        className={`bg-white border border-gray-200 rounded-xl shadow-md overflow-hidden transition ${hoverEffect ? 'hover:shadow-lg hover:scale-105 hover:cursor-pointer' : ''}`}
+        className={`bg-white border border-gray-200 rounded-xl shadow-md overflow-hidden transition ${hoverEffect ? 'hover:shadow-lg hover:scale-105' : ''}`}
       >
         {image && (
           <Image
@@ -43,7 +42,10 @@ export const Card = ({
         <div className="p-6">
           {header && <div className="mb-4">{header}</div>}
           {title && (
-            <h5 className="text-2xl font-semibold text-gray-900 mb-2">
+            <h5
+              className="text-2xl font-semibold text-gray-900 mb-2 hover:cursor-pointer"
+              onClick={onClick}
+            >
               {title}
             </h5>
           )}
