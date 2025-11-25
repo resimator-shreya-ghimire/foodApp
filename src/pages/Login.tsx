@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuthStore } from '../store/auth.tsx';
 import { loginFormSchema } from '../utils/validations.ts';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { InputField } from '../components/input/FormInput.tsx';
+import { FormInput } from '../components/input/FormInput.tsx';
 import { Button } from '../components/button/Button.tsx';
 
 type LoginForm = {
@@ -44,12 +44,12 @@ const Login = () => {
           onSubmit={handleSubmit(onSubmit)}
           className="w-[92%] max-w-md bg-white/30 p-8 rounded-md shadow-xl border border-white"
         >
-          <InputField
+          <FormInput
             fieldname="email"
             label="Email"
             placeholder="Enter your email"
           />
-          <InputField
+          <FormInput
             fieldname="password"
             label="Password"
             placeholder="Enter your password"

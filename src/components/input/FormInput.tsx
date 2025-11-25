@@ -10,7 +10,7 @@ type InputFieldProps = {
   className?: string;
 };
 
-export const InputField = ({
+export const FormInput = ({
   fieldname,
   label,
   value,

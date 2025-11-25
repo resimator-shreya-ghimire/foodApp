@@ -29,7 +29,7 @@ export const Footer = ({
                   {section?.fields?.map((field, idx) => (
                     <li key={idx} className="mb-1">
                       <a href={field?.link} className="hover:underline">
-                        {field.name}
+                        {field?.name}
                       </a>
                     </li>
                   ))}
