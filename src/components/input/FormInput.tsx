@@ -5,7 +5,7 @@ import { Error } from '../error/Error';
 type InputFieldProps = {
   fieldname: string;
   label?: string;
-  value?: string | number;
+  labelClassName?: string;
   placeholder?: string;
   className?: string;
 };
@@ -13,7 +13,7 @@ type InputFieldProps = {
 export const FormInput = ({
   fieldname,
   label,
-  value,
+  labelClassName,
   placeholder,
   className,
 }: InputFieldProps) => {
@@ -26,7 +26,7 @@ export const FormInput = ({
 
   return (
     <div className="mb-4">
-      <label className="block text-sm font-medium text-gray-700 mb-1">
+      <label className={`block text-sm font-medium text-gray-700 mb-1 ${labelClassName}`}>
         {label}
       </label>
       <div
@@ -42,7 +42,6 @@ export const FormInput = ({
                 : fieldname
             }
             placeholder={placeholder}
-            value={value}
             {...register(fieldname)}
             className="w-full h-full px-4 py-2 bg-transparent outline-none appearance-none"
           />

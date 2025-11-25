@@ -2,6 +2,7 @@
 
 @theme {
   --color-primary: #000000;
+  --color-background-gradient: linear-gradient(to right, #ff9a9e, #fecfef, #c1dfc4, #deecdd);
 
   /* Example additional colors */
   --color-secondary: #fcd5ce;

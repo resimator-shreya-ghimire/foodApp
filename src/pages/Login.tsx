@@ -5,6 +5,8 @@ import { loginFormSchema } from '../utils/validations.ts';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { FormInput } from '../components/input/FormInput.tsx';
 import { Button } from '../components/button/Button.tsx';
+import { Banner } from '../components/banner/Banner.tsx';
+import { Image } from '../components/image/Image.tsx';
 
 type LoginForm = {
   email: string;
@@ -38,30 +40,51 @@ const Login = () => {
   };
 
   return (
-    <div className="h-screen flex items-center justify-center bg-primary">
-      <FormProvider {...methods}>
-        <form
-          onSubmit={handleSubmit(onSubmit)}
-          className="w-[92%] max-w-md bg-white/30 p-8 rounded-md shadow-xl border border-white"
-        >
-          <FormInput
-            fieldname="email"
-            label="Email"
-            placeholder="Enter your email"
+    <div className="min-h-screen w-full flex items-center justify-center bg-gradient-to-br from-orange-50 via-pink-50 to-purple-50">
+      <Banner layout="flex-row" className="bg-white h-80% max-w-7xl mx-auto">
+        <Banner.Item className="flex-1 overflow-hidden rounded-0">
+          <Image
+            src="https://www.eatthis.com/wp-content/uploads/sites/4/2023/06/Duck-Donuts.jpg?quality=82&strip=1"
+            alt="Delicious food"
+            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
           />
-          <FormInput
-            fieldname="password"
-            label="Password"
-            placeholder="Enter your password"
-          />
-          <Button
-            label="Login"
-            type="submit"
-            variant="primary"
-            loading={isSubmitting}
-          />
-        </form>
-      </FormProvider>
+        </Banner.Item>
+        <Banner.Item className="flex-1 backdrop-blur-sm">
+          <div className="w-full max-w-md px-md">
+            <div className="text-center pb-md">
+              <p className="text-gray-600">Enter your credentials to continue</p>
+            </div>
+
+            <FormProvider {...methods}>
+              <form
+                onSubmit={handleSubmit(onSubmit)}
+                className="space-y-md"
+              >
+                <div className="space-y-md">
+                  <FormInput
+                    fieldname="email"
+                    label="Email Address"
+                    className="bg-white  px-xs py-s transition-all duration-200"
+                    placeholder="your.email@example.com"
+                  />
+                  <FormInput
+                    fieldname="password"
+                    label="Password"
+                    className="bg-white px-xs py-s transition-all duration-200"
+                    placeholder="Enter your password"
+                  />
+                </div>
+                <Button
+                  label="Sign In"
+                  type="submit"
+                  variant="primary"
+                  loading={isSubmitting}
+                />
+              </form>
+            </FormProvider>
+          </div>
+        </Banner.Item>
+      </Banner>
     </div>
   );
 };

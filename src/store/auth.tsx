@@ -20,7 +20,6 @@ export const useAuthStore = create<AuthState>((set) => ({
       user: userData,
       token: authToken,
     });
-
     localStorage.setItem('token', authToken);
     localStorage.setItem('user', JSON.stringify(userData));
   },
@@ -30,7 +29,6 @@ export const useAuthStore = create<AuthState>((set) => ({
       user: null,
       token: null,
     });
-
     localStorage.removeItem('token');
   },
 }));

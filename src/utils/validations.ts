@@ -7,8 +7,6 @@ export const loginFormSchema = Yup.object().shape({
   password: Yup.string()
     .required('Password is required')
     .min(8, 'Password must be at least 8 characters long.'),
-  message: Yup.string()
-    .required('Message is required'),
 });
 
 export const contactFormSchema = Yup.object().shape({
