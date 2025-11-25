@@ -30,7 +30,7 @@ export const FormInput = ({
         {label}
       </label>
       <div
-        className={`rounded-md border border-gray-200 overflow-hidden ${errors[fieldname] ? ' border-red-400' : ''} ${className}`}
+        className={`rounded-md border border-gray-200 overflow-hidden ${errors?.[fieldname] ? ' border-red-400' : ''} ${className}`}
       >
         <div className="flex w-full h-12 ">
           <input
@@ -58,7 +58,7 @@ export const FormInput = ({
           )}
         </div>
       </div>
-      {errors[fieldname] && (
+      {errors?.[fieldname] && (
         <Error message={errors[fieldname]?.message as string} />
       )}
     </div>

@@ -1,5 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import { useAuthStore } from '../../store/auth.tsx';
+import { Icon } from '../icon/Icon.tsx';
+import { faCartShopping, faUser } from '@fortawesome/free-solid-svg-icons';
+import { Popover } from '../popover/Popover.tsx';
 import { Button } from '../button/Button.tsx';
 
 const NavigationBar = () => {
@@ -16,18 +19,41 @@ const NavigationBar = () => {
 
   return (
     <header className="w-full">
-      <div className="max-w-6xl mx-auto px-2 py-3 flex items-center justify-between">
-        <div className="logo text-xl font-weight-500 text-black">Foodyhood</div>
+      <div className="max-w-6xl mx-auto px-2 py-4 flex items-center justify-between">
+        <div className="logo text-xl font-weight-500 text-black cursor-pointer" onClick={() => navigate('/')}>Foodyhood</div>
         <nav aria-label="Main Navigation">
           <ul className="hidden sm:flex gap-6 items-center text-gray-700">
-            <li
-              className="hover:text-orange-500 cursor-pointer font-medium"
-              onClick={() => navigate('/cart')}
-            >
-              Cart
+            <li>
+              <Icon
+                icon={faCartShopping}
+                title="Cart"
+                className="text-xl cursor-pointer"
+                onClick={() => navigate('/cart')}
+              />
             </li>
             <li>
-              <Button label="Logout" variant="delete" onClick={handleLogout} />
+              <Popover
+                direction="bottom"
+                content={
+                  <div className="flex flex-col gap-3">
+                    <div className="border-b pb-2">
+                      <p className="text-sm text-gray-500">Signed in as</p>
+                      <p className="font-medium text-gray-800">{user?.email}</p>
+                    </div>
+                    <Button
+                      onClick={handleLogout}
+                      label="Logout"
+                      className="text-left px-3 py-2 text-sm text-red-600 hover:bg-red-50 rounded transition-colors"
+                    />
+                  </div>
+                }
+              >
+                <Icon
+                  icon={faUser}
+                  title="User"
+                  className="text-xl cursor-pointer"
+                />
+              </Popover>
             </li>
           </ul>
         </nav>

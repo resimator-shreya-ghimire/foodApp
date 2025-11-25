@@ -6,6 +6,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { FormInput } from '../components/input/FormInput.tsx';
 import { Button } from '../components/button/Button.tsx';
 import { Banner } from '../components/banner/Banner.tsx';
+import { useToastStore } from '../store/toastStore.tsx';
 import { Image } from '../components/image/Image.tsx';
 
 type LoginForm = {
@@ -16,6 +17,8 @@ type LoginForm = {
 const Login = () => {
   const navigate = useNavigate();
   const { login } = useAuthStore();
+  const { showToast } = useToastStore();
+
 
   const userString = localStorage.getItem('user');
   const user = userString ? JSON.parse(userString) : null;
@@ -36,6 +39,7 @@ const Login = () => {
   const onSubmit = (data: LoginForm) => {
     const token = Math.random().toString(36).slice(2);
     login({ email: data.email }, token);
+    showToast('success', 'Login successful!');
     navigate('/');
   };
 

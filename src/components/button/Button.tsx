@@ -1,8 +1,12 @@
+import { Icon } from "../icon/Icon";
+import type { IconDefinition } from "@fortawesome/free-solid-svg-icons";
+
 type variantTypes = 'primary' | 'delete' | 'add';
-type buttonTypes = 'button' | 'submit' | 'reset';
+type buttonTypes = 'button' | 'submit' | 'reset' | 'text' | 'icon';
 
 type ButtonProps = {
   label: string;
+  icon?: IconDefinition;
   type?: buttonTypes;
   disabled?: boolean;
   variant?: variantTypes;
@@ -13,6 +17,7 @@ type ButtonProps = {
 
 export const Button = ({
   label,
+  icon,
   type = 'button',
   disabled = false,
   variant = 'primary',
@@ -29,6 +34,14 @@ export const Button = ({
 
   const disabledClasses = disabled ? 'opacity-50 cursor-not-allowed' : '';
   const loadingCursor = loading ? 'cursor-wait' : '';
+
+  if (type === 'text') {
+    return <p className="text-sm cursor-pointer underline" onClick={onClick}>{label}</p>;
+  }
+
+  if (type === 'icon') {
+    return <Icon icon={icon} className="text-sm cursor-pointer underline" onClick={onClick} />;
+  }
 
   return (
     <button

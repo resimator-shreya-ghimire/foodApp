@@ -7,11 +7,17 @@ export function Image({
   placeholder = '',
   alt,
   className,
+  onClick,
+  title,
+  nostyle,
 }: {
   src?: string;
   placeholder?: string;
   alt?: string;
   className?: string;
+  onClick?: () => void;
+  title?: string;
+  nostyle?: boolean
 }) {
   const wrapperRef = useRef<HTMLDivElement | null>(null);
   const imgRef = useRef<HTMLImageElement | null>(null);
@@ -49,8 +55,10 @@ export function Image({
           className={`${className} ${!imageLoaded ? 'blur' : ''} transition-all duration-300`}
           src={placeholder || src}
           alt={alt}
+          title={title}
           loading="lazy"
           onLoad={handleImageLoad}
+          onClick={onClick}
         />
       )}
     </div>
