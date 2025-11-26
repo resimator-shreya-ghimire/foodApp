@@ -8,6 +8,22 @@ import { useNavigate } from 'react-router-dom';
 import ListHeader from './ListHeader';
 import { Actions } from './Actions';
 
+export type FoodData = {
+  id: number;
+  name: string;
+  category: string;
+  price: number;
+  isVegetarian: boolean;
+  description: string;
+  image: string;
+};
+
+type PageResponse = {
+  items: FoodData[];
+  nextPage?: number;
+  pageParam?: number;
+};
+
 export const FoodList = () => {
   const navigate = useNavigate();
   const { query, filtered } = useSearch();
@@ -21,9 +37,9 @@ export const FoodList = () => {
     fetchNextPage,
     hasNextPage,
     isFetchingNextPage,
-  } = useInfiniteQuery({
+  } = useInfiniteQuery<PageResponse>({
     queryKey: ['foods'],
-    queryFn: ({ pageParam = 1 }) => getProductList({ pageParam }),
+    queryFn: ({ pageParam = 1 }) => getProductList({ pageParam: pageParam as number }),
     initialPageParam: 1,
     getNextPageParam: (lastPage) => lastPage.nextPage,
   });

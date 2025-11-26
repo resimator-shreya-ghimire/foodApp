@@ -20,8 +20,6 @@ export const FooterWrapper = () => {
       queryFn: getFooterList,
     }) ?? [];
 
-  console.log('inside', data);
-
   return (
     <Footer
       className="max-w-4xl mx-auto px-4 flex gap-10"

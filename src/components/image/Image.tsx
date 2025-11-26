@@ -9,7 +9,6 @@ export function Image({
   className,
   onClick,
   title,
-  nostyle,
 }: {
   src?: string;
   placeholder?: string;
@@ -17,7 +16,6 @@ export function Image({
   className?: string;
   onClick?: () => void;
   title?: string;
-  nostyle?: boolean
 }) {
   const wrapperRef = useRef<HTMLDivElement | null>(null);
   const imgRef = useRef<HTMLImageElement | null>(null);

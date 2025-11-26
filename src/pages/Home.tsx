@@ -1,5 +1,5 @@
 import { FoodList } from '../components/product-list/FoodList';
-import { FooterWrapper } from '../components/Footer/FooterWrapper';
+import { FooterWrapper } from '../components/footer/FooterWrapper';
 import { Banner } from '../components/banner/Banner';
 import { Image } from '../components/image/Image';
 
@@ -18,13 +18,13 @@ const Home = () => {
           </div>
           <div className="relative z-10 h-full flex items-center px-12 md:px-20">
             <div className="max-w-2xl">
-              <h1 className="text-5xl md:text-7xl font-bold text-pink mb-4 leading-tight">
-                Try Our <span className="text-orange-400">Food</span>
+              <h1 className="text-5xl md:text-7xl font-bold text-pink mb-4 leading-tight text-shadow-lg">
+                Try Our <span className="text-orange-400 text-shadow-lg">Food</span>
               </h1>
-              <p className="text-xl md:text-2xl  mb-8 leading-relaxed text-black">
+              <p className="text-xl md:text-2xl  mb-8 leading-relaxed text-black text-shadow-lg">
                 Experience the finest flavors crafted with passion.
                 <br />
-                <span className="text-red-600 font-semibold">Fresh ingredients, unforgettable taste.</span>
+                <span className="text-red-600 font-semibold text-shadow-lg">Fresh ingredients, unforgettable taste.</span>
               </p>
             </div>
           </div>

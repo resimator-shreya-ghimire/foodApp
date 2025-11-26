@@ -48,7 +48,7 @@ export const Button = ({
       type={type}
       disabled={disabled || loading}
       aria-busy={loading}
-      className={`w-full py-3 px-6 rounded-lg font-semibold transition-all duration-200 flex items-center justify-center ${buttonClassNames} ${disabledClasses} ${loadingCursor} ${className}`}
+      className={`py-3 px-6 rounded-lg font-semibold transition-all duration-200 flex items-center justify-center ${buttonClassNames} ${disabledClasses} ${loadingCursor} ${className}`}
       onClick={onClick}
     >
       {loading ? (

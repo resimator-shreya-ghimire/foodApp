@@ -4,9 +4,19 @@ import { Icon } from '../icon/Icon.tsx';
 import { faCartShopping, faUser } from '@fortawesome/free-solid-svg-icons';
 import { Popover } from '../popover/Popover.tsx';
 import { Button } from '../button/Button.tsx';
+import { useQuery } from '@tanstack/react-query';
+import { getCartCount } from '../../api/mockapi';
 
 const NavigationBar = () => {
   const { user, logout } = useAuthStore();
+
+  const { data } = useQuery({
+    queryKey: ['cartCount'],
+    queryFn: getCartCount,
+    refetchInterval: 7000,
+    refetchIntervalInBackground: false,
+  });
+
 
   const navigate = useNavigate();
   const handleLogout = () => {
@@ -24,6 +34,7 @@ const NavigationBar = () => {
         <nav aria-label="Main Navigation">
           <ul className="hidden sm:flex gap-6 items-center text-gray-700">
             <li>
+              <span className="absolute top-1.5 count-badge bg-red-500 text-white w-3 h-3 px-2 py-2 rounded-full flex items-center justify-center">{data}</span>
               <Icon
                 icon={faCartShopping}
                 title="Cart"
