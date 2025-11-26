@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import { Input } from '../input/Input';
-import { useSearch } from '../../hooks/useSearch';
-import { useDebounce } from '../../hooks/useDebounce';
+import { Input } from '@/components/input/Input';
+import { useSearch } from '@/hooks/useSearch';
+import { useDebounce } from '@/hooks/useDebounce';
 
 const ListHeader = () => {
     const { query, updateQuery } = useSearch();

@@ -4,12 +4,12 @@ import {
   Route,
   Navigate,
 } from 'react-router-dom';
-import Login from './pages/Login.tsx';
-import Home from './pages/Home.tsx';
-import FoodDetails from './pages/FoodDetails.tsx';
-import PageNotFound from './pages/PageNotFound.tsx';
-import Cart from './pages/Cart.tsx';
-import { ToastHost } from './components/Toast/ToastHost.tsx';
+import Login from '@/pages/Login.tsx';
+import Home from '@/pages/Home.tsx';
+import FoodDetails from '@/pages/FoodDetails.tsx';
+import PageNotFound from '@/pages/PageNotFound.tsx';
+import Cart from '@/pages/Cart.tsx';
+import { ToastHost } from '@/components/Toast/ToastHost.tsx';
 import Layout from './pages/Layout.tsx';
 
 const PrivateRoute = () => {

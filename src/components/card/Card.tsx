@@ -1,4 +1,4 @@
-import { Image } from '../image/Image';
+import { Image } from '@/components/image/Image';
 
 type CardProps = {
   title?: string;
@@ -24,7 +24,7 @@ export const Card = ({
   className = '',
   actions = null,
   hoverEffect = true,
-  onClick = () => {},
+  onClick = () => { },
 }: CardProps) => {
   return (
     <div className={`mb-4 ${className}`}>

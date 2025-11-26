@@ -1,15 +1,16 @@
-import { Button } from '../button/Button';
-import { useCart } from '../../store/cart';
+import { Button } from '@/components/button/Button';
+import { useCart } from '@/store/cart';
+import type { FoodData } from '@/components/product-list/FoodList';
 
-export const Actions = ({ food }: { food?: any }) => {
+export const Actions = ({ food }: { food?: FoodData }) => {
     const { addToCart, increaseQuantity, decreaseQuantity, cartItems } =
         useCart();
 
-    const cartItem = cartItems.find((item: any) => item.id === food.id);
-    const quantity = cartItem ? cartItem.quantity : 0;
+    const cartItem = cartItems.find((item: FoodData) => item?.id === food?.id);
+    const quantity = cartItem?.quantity ?? 0;
 
     return quantity > 0 ? (
-        <div key={food.id} className="w-50% flex items-center gap-2">
+        <div key={food?.id} className="w-50% flex items-center gap-2">
             <Button
                 label="-"
                 variant="delete"
@@ -20,7 +21,7 @@ export const Actions = ({ food }: { food?: any }) => {
         </div>
     ) : (
         <Button
-            key={food.id}
+            key={food?.id}
             label="Add"
             variant="add"
             onClick={() => addToCart({ ...food, quantity: 1 })}

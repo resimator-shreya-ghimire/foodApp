@@ -1,11 +1,11 @@
 import { useNavigate } from 'react-router-dom';
-import { useAuthStore } from '../../store/auth.tsx';
-import { Icon } from '../icon/Icon.tsx';
+import { useAuthStore } from '@/store/auth.tsx';
+import { Icon } from '@/components/icon/Icon.tsx';
 import { faCartShopping, faUser } from '@fortawesome/free-solid-svg-icons';
-import { Popover } from '../popover/Popover.tsx';
-import { Button } from '../button/Button.tsx';
+import { Popover } from '@/components/popover/Popover.tsx';
+import { Button } from '@/components/button/Button.tsx';
 import { useQuery } from '@tanstack/react-query';
-import { getCartCount } from '../../api/mockapi';
+import { getCartCount } from '@/api/mockapi';
 
 const NavigationBar = () => {
   const { user, logout } = useAuthStore();
@@ -14,7 +14,8 @@ const NavigationBar = () => {
     queryKey: ['cartCount'],
     queryFn: getCartCount,
     refetchInterval: 7000,
-    refetchIntervalInBackground: false,
+    refetchIntervalInBackground: true,
+    refetchOnWindowFocus: true,
   });
 
 

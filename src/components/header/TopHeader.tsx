@@ -1,8 +1,8 @@
-import { Button } from "../button/Button";
+import { Button } from "@/components/button/Button";
 import { useState } from "react";
 
 const TopHeader = () => {
-  const [show, setShow] = useState(sessionStorage.getItem('show-top-header') ? false : true);
+  const [show, setShow] = useState(sessionStorage.getItem('show-top-header') ?? '' ? false : true);
 
   const handleClose = () => {
     sessionStorage.setItem('show-top-header', 'false');

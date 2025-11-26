@@ -1,14 +1,14 @@
 
 import { useParams } from 'react-router-dom';
-import { Image } from '../components/image/Image';
-import { getProductById } from '../api/mockapi';
+import { Image } from '@/components/image/Image';
+import { getProductById } from '@/api/mockapi';
 import { useQuery } from '@tanstack/react-query';
-import type { FoodData } from '../components/product-list/FoodList';
-import { StarRating } from '../components/rating/StarRating';
-import { useToastStore } from '../store/toastStore';
-import { Review } from '../components/review/Review';
-import { Banner } from '../components/banner/Banner';
-import { Actions } from '../components/product-list/Actions';
+import type { FoodData } from '@/components/product-list/FoodList';
+import { StarRating } from '@/components/rating/StarRating';
+import { useToastStore } from '@/store/toastStore';
+import { Review } from '@/components/review/Review';
+import { Banner } from '@/components/banner/Banner';
+import { Actions } from '@/components/product-list/Actions';
 
 export type reviewProps = {
   reviews: Array<{
@@ -54,12 +54,12 @@ const FoodDetails = () => {
           <Banner.Item className='w-1/2 relative'>
             <div className="aspect-square rounded-xl overflow-hidden bg-gray-100 shadow-lg p-sm">
               <Image
-                src={data.image}
-                alt={data.name}
+                src={data?.image ?? ''}
+                alt={data?.name ?? 'Food item'}
                 className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
               />
             </div>
-            {data.isVegetarian && (
+            {data?.isVegetarian && (
               <div className="absolute top-4 right-4 bg-green-500 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
                 Vegetarian
               </div>
@@ -70,28 +70,28 @@ const FoodDetails = () => {
               <div>
                 <div className="mb-2">
                   <span className="inline-block bg-purple-100 text-purple-800 text-xs font-semibold px-3 py-1 rounded-full">
-                    {data.category}
+                    {data?.category}
                   </span>
                 </div>
 
                 <h1 className="text-4xl font-bold text-gray-900 mb-4">
-                  {data.name}
+                  {data?.name}
                 </h1>
 
                 <div className="flex items-center gap-3 mb-6">
-                  <StarRating rating={data.rating} size="lg" showNumber />
+                  <StarRating rating={data?.rating ?? 0} size="lg" showNumber />
                   <span className="text-gray-500 text-sm">
-                    ({data.reviews.length} {data.reviews.length === 1 ? 'review' : 'reviews'})
+                    ({data?.reviews?.length ?? 0} {data?.reviews?.length === 1 ? 'review' : 'reviews'})
                   </span>
                 </div>
 
                 <p className="text-gray-600 text-lg leading-relaxed mb-6">
-                  {data.description}
+                  {data?.description}
                 </p>
 
                 <div className="mb-8">
                   <div className="text-4xl font-bold text-purple-600">
-                    Nrs. {(data.price)}
+                    Nrs. {(data?.price ?? 0)}
                   </div>
                   <p className="text-gray-500 text-sm mt-1">Inclusive of all taxes</p>
                 </div>
@@ -100,7 +100,7 @@ const FoodDetails = () => {
             </div>
           </Banner.Item>
         </Banner>
-        <Review reviews={data.reviews} rating={data.rating} />
+        <Review reviews={data?.reviews ?? []} rating={data?.rating ?? 0} />
       </div>
 
 

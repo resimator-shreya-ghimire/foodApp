@@ -1,5 +1,5 @@
-import TopHeader from './TopHeader';
-import NavigationBar from './NavigationBar';
+import TopHeader from '@/components/header/TopHeader';
+import NavigationBar from '@/components/header/NavigationBar';
 
 export const Header = () => {
   return (

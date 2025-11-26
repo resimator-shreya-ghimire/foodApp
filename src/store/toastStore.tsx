@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import type { ToastData, ToastType } from "../components/Toast/ToastItem";
+import type { ToastData, ToastType } from "@/components/Toast/ToastItem";
 
 type ToastStore = {
     toasts: ToastData[];

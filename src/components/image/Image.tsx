@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
-import { useLazyLoadingImage } from '../../hooks/useLazyLoadingImage';
-import ImageSkeleton from './ImageSkeleton';
+import { useLazyLoadingOnIntersection } from '@/hooks/useLazyLoadingOnIntersection';
+import ImageSkeleton from '@/components/image/ImageSkeleton';
 
 export function Image({
   src,
@@ -22,7 +22,7 @@ export function Image({
   const [shouldLoadImage, setShouldLoadImage] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
 
-  const { shouldLoad } = useLazyLoadingImage(wrapperRef, {
+  const { shouldLoad } = useLazyLoadingOnIntersection(wrapperRef, {
     rootMargin: '1px',
   });
 

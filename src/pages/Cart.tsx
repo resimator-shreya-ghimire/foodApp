@@ -1,6 +1,6 @@
-import { useCart } from "../store/cart";
-import { List } from "../components/list/List";
-import { Actions } from "../components/product-list/Actions";
+import { useCart } from "@/store/cart";
+import { List } from "@/components/list/List";
+import { Actions } from "@/components/product-list/Actions";
 
 const Cart = () => {
     const { cartItems, clearCart } = useCart();

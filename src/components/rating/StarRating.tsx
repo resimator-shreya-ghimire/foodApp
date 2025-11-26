@@ -10,7 +10,6 @@ interface StarRatingProps {
 
 export const StarRating = ({
     rating,
-    maxRating = 5,
     size = 'md',
     showNumber = false
 }: StarRatingProps) => {
@@ -20,53 +19,35 @@ export const StarRating = ({
         lg: 'text-xl'
     };
 
-    const renderStars = () => {
-        const stars = [];
-        const fullStars = Math.floor(rating);
-        const hasHalfStar = rating % 1 >= 0.5;
+    const fullStars = Math.floor(rating);
+    const hasHalfStar = rating % 1 >= 0.5;
 
-        for (let i = 0; i < fullStars; i++) {
-            stars.push(
+    const stars = () => {
+        const starsArray: React.ReactNode[] = [];
+        for (let i = 1; i <= 5; i++) {
+            let starType = i <= fullStars ? 'full' : i === fullStars + 1 && hasHalfStar ? 'half' : 'empty';
+            starsArray.push(
                 <FontAwesomeIcon
-                    key={`full-${i}`}
-                    icon={faStar}
-                    className="text-yellow-400"
+                    key={i}
+                    icon={starType === 'full' ? faStar : starType === 'half' ? faStarHalfAlt : faStar}
+                    className={starType === 'empty' ? 'text-gray-400' : 'text-yellow-400'}
                 />
-            );
+            )
         }
+        return starsArray;
+    }
 
-        if (hasHalfStar && fullStars < maxRating) {
-            stars.push(
-                <FontAwesomeIcon
-                    key="half"
-                    icon={faStarHalfAlt}
-                    className="text-yellow-400"
-                />
-            );
-        }
-
-        const emptyStars = maxRating - fullStars - (hasHalfStar ? 1 : 0);
-        for (let i = 0; i < emptyStars; i++) {
-            stars.push(
-                <FontAwesomeIcon
-                    key={`empty-${i}`}
-                    icon={faStar}
-                    className="text-gray-300"
-                />
-            );
-        }
-
-        return stars;
-    };
 
     return (
         <div className="flex items-center gap-1">
-            <div className={`flex gap-1 ${sizeClasses[size]}`}>
-                {renderStars()}
+            <div className={`flex gap-1 ${sizeClasses?.[size] ?? 'text-base'}`}>
+                {
+                    stars()
+                }
             </div>
             {showNumber && (
                 <span className="text-gray-600 ml-1 text-sm font-medium">
-                    {rating.toFixed(1)}
+                    {rating?.toFixed(1) ?? '0.0'}
                 </span>
             )}
         </div>

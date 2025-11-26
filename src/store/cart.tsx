@@ -1,13 +1,14 @@
 import { create } from 'zustand';
+import type { FoodData } from '@/components/product-list/FoodList';
 
 type CartStates = {
-  cartItems: any[];
+  cartItems: FoodData[];
   cartCount: number;
-  addToCart: (item: any) => void;
-  removeFromCart: (item: any) => void;
+  addToCart: (item: FoodData) => void;
+  removeFromCart: (item: FoodData) => void;
   clearCart: () => void;
-  increaseQuantity: (item: any) => void;
-  decreaseQuantity: (item: any) => void;
+  increaseQuantity: (item: FoodData) => void;
+  decreaseQuantity: (item: FoodData) => void;
   proceedToCheckout: () => void;
 };
 
@@ -16,7 +17,7 @@ export const useCart = create<CartStates>((set) => {
     cartItems: [],
     cartCount: Number(localStorage.getItem('cartCount') ?? '0'),
 
-    addToCart: (item: any) =>
+    addToCart: (item: FoodData) =>
       set((state) => {
         const existingItem = state.cartItems.find((i) => i.id === item.id);
         const newCount = state.cartCount + 1;
@@ -25,7 +26,7 @@ export const useCart = create<CartStates>((set) => {
         if (existingItem) {
           return {
             cartItems: state.cartItems.map((i) =>
-              i.id === item.id ? { ...i, quantity: i.quantity + 1 } : i
+              i.id === item.id ? { ...i, quantity: (i.quantity ?? 0) + 1 } : i
             ),
             cartCount: newCount,
           };
@@ -36,11 +37,11 @@ export const useCart = create<CartStates>((set) => {
         };
       }),
 
-    removeFromCart: (item: any) =>
+    removeFromCart: (item: FoodData) =>
       set((state) => {
         const itemToRemove = state.cartItems.find((i) => i.id === item.id);
         const newCartItems = state.cartItems.filter((i) => i.id !== item.id);
-        const newCount = state.cartCount - (itemToRemove?.quantity || 0);
+        const newCount = state.cartCount - (itemToRemove?.quantity ?? 0);
         localStorage.setItem('cartCount', String(newCount));
 
         return {
@@ -58,7 +59,7 @@ export const useCart = create<CartStates>((set) => {
         };
       }),
 
-    increaseQuantity: (item: any) =>
+    increaseQuantity: (item: FoodData) =>
       set((state) => {
         const newCount = state.cartCount + 1;
         localStorage.setItem('cartCount', String(newCount));
@@ -66,14 +67,14 @@ export const useCart = create<CartStates>((set) => {
         return {
           cartItems: state.cartItems.map((items) =>
             items.id === item.id
-              ? { ...items, quantity: items.quantity + 1 }
+              ? { ...items, quantity: (items.quantity ?? 0) + 1 }
               : items
           ),
           cartCount: newCount,
         };
       }),
 
-    decreaseQuantity: (item: any) =>
+    decreaseQuantity: (item: FoodData) =>
       set((state) => {
         const newCount = state.cartCount - 1;
         localStorage.setItem('cartCount', String(newCount));
@@ -82,10 +83,10 @@ export const useCart = create<CartStates>((set) => {
           cartItems: state.cartItems
             .map((items) =>
               items.id === item.id
-                ? { ...items, quantity: items.quantity - 1 }
+                ? { ...items, quantity: (items.quantity ?? 0) - 1 }
                 : items
             )
-            .filter((items) => items.quantity > 0),
+            .filter((items) => (items.quantity ?? 0) > 0),
           cartCount: newCount,
         };
       }),

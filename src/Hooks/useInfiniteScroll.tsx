@@ -20,7 +20,7 @@ export const useInfiniteScroll = ({
         if (!ref?.current || !enabled) return;
 
         const observer = new IntersectionObserver((entries) => {
-            if (entries[0].isIntersecting) {
+            if (entries?.[0]?.isIntersecting) {
                 onIntersect();
             }
         }, {

@@ -1,4 +1,4 @@
-import { BannerItem } from "./Item";
+import { BannerItem } from "@/components/banner/Item";
 
 type BannerProps = {
     layout?: string;

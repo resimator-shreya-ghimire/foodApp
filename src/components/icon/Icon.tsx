@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import type { IconDefinition } from '@fortawesome/fontawesome-svg-core';
-import { Image } from '../image/Image';
+import { Image } from '@/components/image/Image';
 
 interface IconProps {
     icon?: IconDefinition;
@@ -18,7 +18,7 @@ export const Icon = ({ icon, src, alt = '', className = '', onClick, title }: Ic
     }
     return (
         <Image
-            src={src}
+            src={src ?? ''}
             alt={alt}
             className={`${hoverClass} ${className}`}
             onClick={onClick}

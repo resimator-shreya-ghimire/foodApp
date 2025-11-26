@@ -1,8 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { ListItem } from './ListItem';
-import { useInfiniteScroll } from '../../hooks/useInfiniteScroll';
+import { ListItem } from '@/components/list/ListItem';
+import { useInfiniteScroll } from '@/hooks/useInfiniteScroll';
 
 type FieldName = {
+    title?: string;
+    metaDescription?: string;
+    avatar?: string;
+};
+
+type ListItems = {
     title?: string;
     metaDescription?: string;
     avatar?: string;
@@ -13,10 +19,10 @@ type ListProps = {
     title?: string;
     footer?: React.ReactNode;
     mapFieldName?: FieldName;
-    items?: any[];
-    itemsRenderer?: (item: any) => React.ReactNode;
-    actions?: (item: any) => React.ReactNode;
-    onItemClick?: (item: any) => void;
+    items?: ListItems[];
+    itemsRenderer?: (items: ListItems[]) => React.ReactNode;
+    actions?: (item: ListItems) => React.ReactNode;
+    onItemClick?: (item: ListItems) => void;
 };
 
 export const List = ({
@@ -32,7 +38,7 @@ export const List = ({
     const loadMoreRef = useRef<HTMLDivElement | null>(null);
     const pageSize = 8;
     const [page, setPage] = useState(0);
-    const [listItems, setListItems] = useState<any[]>([]);
+    const [listItems, setListItems] = useState<ListItems[]>([]);
 
     useEffect(() => {
         if (items && items.length) {
@@ -59,13 +65,13 @@ export const List = ({
         enabled: true,
     });
 
-    const mappedItems = listItems?.map((item: any) => {
+    const mappedItems: ListItems[] = listItems?.map((item: ListItems) => {
         if (mapFieldName) {
             return {
                 ...item,
-                title: item[mapFieldName.title as string],
-                metaDescription: item[mapFieldName.metaDescription as string],
-                avatar: item[mapFieldName.avatar as string],
+                title: item?.[mapFieldName?.title as keyof ListItems] ?? '',
+                metaDescription: item?.[mapFieldName?.metaDescription as keyof ListItems] ?? '',
+                avatar: item?.[mapFieldName?.avatar as keyof ListItems] ?? '',
             };
         }
         return item;
@@ -77,13 +83,13 @@ export const List = ({
             {title && <h3 className="text-xl font-bold text-gray-800">{title}</h3>}
             {items?.length === 0 && <p className="text-gray-500">No items found</p>}
             {itemsRenderer ?
-                itemsRenderer(items)
-                : mappedItems.map((item?: any) => (
+                itemsRenderer(mappedItems)
+                : mappedItems.map((item?: ListItems) => (
                     <ListItem
-                        key={item.id}
-                        title={item.title}
-                        metaDescription={item.metaDescription}
-                        avatar={item.avatar}
+                        key={item?.id}
+                        title={item?.title}
+                        metaDescription={item?.metaDescription}
+                        avatar={item?.avatar}
                         onClick={() => onItemClick && onItemClick(item)}
                         actions={actions ? actions(item) : null}
                     />

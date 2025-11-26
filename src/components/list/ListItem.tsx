@@ -1,4 +1,4 @@
-import { Image } from '../image/Image';
+import { Image } from '@/components/image/Image';
 
 type ListItemProps = {
     title?: string;

@@ -1,13 +1,13 @@
 import { useForm, FormProvider } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { useAuthStore } from '../store/auth.tsx';
-import { loginFormSchema } from '../utils/validations.ts';
+import { useAuthStore } from '@/store/auth.tsx';
+import { loginFormSchema } from '@/utils/validations.ts';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { FormInput } from '../components/input/FormInput.tsx';
-import { Button } from '../components/button/Button.tsx';
-import { Banner } from '../components/banner/Banner.tsx';
-import { useToastStore } from '../store/toastStore.tsx';
-import { Image } from '../components/image/Image.tsx';
+import { FormInput } from '@/components/input/FormInput.tsx';
+import { Button } from '@/components/button/Button.tsx';
+import { Banner } from '@/components/banner/Banner.tsx';
+import { useToastStore } from '@/store/toastStore.tsx';
+import { Image } from '@/components/image/Image.tsx';
 
 type LoginForm = {
   email: string;

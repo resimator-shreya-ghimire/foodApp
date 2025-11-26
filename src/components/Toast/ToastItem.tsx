@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Icon } from "../icon/Icon";
+import { Icon } from "@/components/icon/Icon";
 import { faCheckCircle, faExclamationCircle, faExclamationTriangle, faInfoCircle, faTimes } from "@fortawesome/free-solid-svg-icons";
 
 export type ToastType = "success" | "error" | "warning" | "info";
@@ -15,6 +15,29 @@ type ToastItemProps = {
     onClose: (id: number) => void;
 }
 
+const toastType = {
+    success: {
+        text: "text-green-800",
+        icon: faCheckCircle,
+        iconColor: "text-green-500"
+    },
+    error: {
+        text: "text-red-800",
+        icon: faExclamationCircle,
+        iconColor: "text-red-500"
+    },
+    warning: {
+        text: "text-yellow-800",
+        icon: faExclamationTriangle,
+        iconColor: "text-yellow-500"
+    },
+    info: {
+        text: "text-blue-800",
+        icon: faInfoCircle,
+        iconColor: "text-blue-500"
+    }
+}
+
 export const ToastItem = ({ toast, onClose }: ToastItemProps) => {
     const [isExiting, setIsExiting] = useState(false);
 
@@ -25,37 +48,7 @@ export const ToastItem = ({ toast, onClose }: ToastItemProps) => {
         }, 300);
     };
 
-    const getToastStyles = () => {
-        switch (toast.type) {
-            case "success":
-                return {
-                    text: "text-green-800",
-                    icon: faCheckCircle,
-                    iconColor: "text-green-500"
-                };
-            case "error":
-                return {
-                    text: "text-red-800",
-                    icon: faExclamationCircle,
-                    iconColor: "text-red-500"
-                };
-            case "warning":
-                return {
-                    text: "text-yellow-800",
-                    icon: faExclamationTriangle,
-                    iconColor: "text-yellow-500"
-                };
-            case "info":
-            default:
-                return {
-                    text: "text-blue-800",
-                    icon: faInfoCircle,
-                    iconColor: "text-blue-500"
-                };
-        }
-    };
-
-    const styles = getToastStyles();
+    const styles = toastType[toast.type];
 
     return (
         <div

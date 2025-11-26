@@ -1,6 +1,6 @@
 import { useSearchParams } from 'react-router-dom';
 
-export function useSearch<T extends { [key: string]: any }>() {
+export function useSearch<T extends { [key: string]: string }>() {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const query = searchParams.get('q')?.toLowerCase() || '';

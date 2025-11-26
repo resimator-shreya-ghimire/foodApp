@@ -1,6 +1,6 @@
-import SomeData from './mock-data-api/SomeData.json';
-import Footerlinks from './mock-data-api/Footerlinks.json';
-import type { FoodData } from '../components/product-list/FoodList';
+import SomeData from '@/api/mock-data-api/SomeData.json';
+import Footerlinks from '@/api/mock-data-api/Footerlinks.json';
+import type { FoodData } from '@/components/product-list/FoodList';
 
 interface FoodDetails extends FoodData {
   reviews: Array<{

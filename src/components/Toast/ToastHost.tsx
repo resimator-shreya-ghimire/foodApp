@@ -1,5 +1,5 @@
-import { useToastStore } from "../../store/toastStore";
-import { ToastItem } from "./ToastItem";
+import { useToastStore } from "@/store/toastStore";
+import { ToastItem } from "@/components/Toast/ToastItem";
 
 export const ToastHost = () => {
     const toasts = useToastStore((s) => s.toasts);

@@ -4,10 +4,10 @@ import {
   FormProvider,
 } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { contactFormSchema } from '../../utils/validations';
-import { FormInput } from '../input/FormInput';
-import { Button } from '../button/Button';
-import { TextArea } from '../form/TextArea';
+import { contactFormSchema } from '@/utils/validations';
+import { FormInput } from '@/components/input/FormInput';
+import { Button } from '@/components/button/Button';
+import { TextArea } from '@/components/form/TextArea';
 
 export const ContactForm: React.FC = () => {
   // Define the shape of the form data

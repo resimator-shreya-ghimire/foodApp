@@ -30,7 +30,7 @@ export const TextArea: React.FC<TextAreaProps> = ({
                 className={`w-full border rounded-md p-3 resize-none outline-none focus:ring-2 focus:ring-blue-600 ${className} ${error ? 'border-red-500' : ''}`}
             />
             {error && (
-                <p className="text-red-500 text-sm mt-1">{(error as any).message}</p>
+                <p className="text-red-500 text-sm mt-1">{(error as any)?.message}</p>
             )}
         </div>
     );

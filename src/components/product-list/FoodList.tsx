@@ -1,21 +1,22 @@
 import { useRef } from 'react';
-import { useSearch } from '../../hooks/useSearch';
-import { useInfiniteScroll } from '../../hooks/useInfiniteScroll';
-import Card from '../card/Card';
-import { getProductList } from '../../api/mockapi';
+import { useSearch } from '@/hooks/useSearch';
+import { useInfiniteScroll } from '@/hooks/useInfiniteScroll';
+import Card from '@/components/card/Card';
+import { getProductList } from '@/api/mockapi';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
-import ListHeader from './ListHeader';
-import { Actions } from './Actions';
+import ListHeader from '@/components/product-list/ListHeader';
+import { Actions } from '@/components/product-list/Actions';
 
 export type FoodData = {
-  id: number;
-  name: string;
-  category: string;
-  price: number;
-  isVegetarian: boolean;
-  description: string;
-  image: string;
+  id?: number;
+  name?: string;
+  category?: string;
+  quantity?: number;
+  price?: number;
+  isVegetarian?: boolean;
+  description?: string;
+  image?: string;
 };
 
 type PageResponse = {
@@ -66,13 +67,13 @@ export const FoodList = () => {
       <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
         {filteredData.map((food) => (
           <Card
-            key={food.id}
-            title={food.name}
-            image={food.image}
-            description={food.description}
-            price={food.price}
-            onClick={() => handleCardClick(food.id)}
-            actions={<Actions key={food.id} food={food} />}
+            key={food?.id}
+            title={food?.name}
+            image={food?.image}
+            description={food?.description}
+            price={food?.price}
+            onClick={() => handleCardClick(food?.id)}
+            actions={<Actions key={food?.id} food={food} />}
           />
         ))}
       </div>

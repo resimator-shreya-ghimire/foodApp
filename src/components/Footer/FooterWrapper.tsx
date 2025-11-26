@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
-import { getFooterList } from '../../api/mockapi';
-import { ContactForm } from './ContactForm';
-import { Footer } from './Footer';
+import { getFooterList } from '@/api/mockapi';
+import { ContactForm } from '@/components/footer/ContactForm';
+import { Footer } from '@/components/footer/Footer';
 
 type links = {
   name: string;

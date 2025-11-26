@@ -1,7 +1,7 @@
-import { FoodList } from '../components/product-list/FoodList';
-import { FooterWrapper } from '../components/footer/FooterWrapper';
-import { Banner } from '../components/banner/Banner';
-import { Image } from '../components/image/Image';
+import { FoodList } from '@/components/product-list/FoodList';
+import { FooterWrapper } from '@/components/footer/FooterWrapper';
+import { Banner } from '@/components/banner/Banner';
+import { Image } from '@/components/image/Image';
 
 const Home = () => {
   return (

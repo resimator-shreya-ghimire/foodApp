@@ -1,4 +1,4 @@
-import type { FooterFields } from './FooterWrapper';
+import type { FooterFields } from '@/components/footer/FooterWrapper';
 
 type FooterProps = {
   children?: React.ReactNode;
