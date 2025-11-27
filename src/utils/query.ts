@@ -38,7 +38,7 @@ export const useProductList = () => {
         queryKey: [QUERY_KEYS.PRODUCTS],
         queryFn: getProductList,
         initialPageParam: 1,
-        getNextPageParam: (lastPage) => lastPage.nextPage,
+        getNextPageParam: (lastPage) => lastPage?.nextPage,
     });
 }
 
