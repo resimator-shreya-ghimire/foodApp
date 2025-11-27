@@ -1,3 +1,5 @@
+
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuthStore } from '@/store/auth.tsx';
 import { Icon } from '@/components/icon/Icon.tsx';
@@ -5,13 +7,31 @@ import { faCartShopping, faUser } from '@fortawesome/free-solid-svg-icons';
 import { Popover } from '@/components/popover/Popover.tsx';
 import { Button } from '@/components/button/Button.tsx';
 import { useCart } from '@/store/cart';
+import { useModalStore } from '@/store/useModalStore';
+import { Modal } from '@/components/modal/Modal.tsx';
 
 
 const NavigationBar = () => {
   const { user, logout } = useAuthStore();
   const { cartCount } = useCart();
+  const { showModal } = useModalStore();
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (cartCount === 0) return;
+    showModal({
+      title: 'Cart',
+      id: 'cart',
+      variant: 'content',
+      content: <div> You have some items in your cart </div>,
+      onConfirm: () => navigate('/cart'),
+      onCancel: () => { },
+      confirmText: 'Go to Cart',
+      cancelText: 'Cancel',
+    });
+  }, []);
+
   const handleLogout = () => {
     if (user?.email) {
       sessionStorage.setItem('user-email', user?.email);
@@ -59,9 +79,10 @@ const NavigationBar = () => {
               </Popover>
             </li>
           </ul>
+          <Modal id="cart" content={<div> somethings </div>} />
         </nav>
       </div>
-    </header>
+    </header >
   );
 };
 
