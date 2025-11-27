@@ -6,9 +6,15 @@ import { getFooterList } from '@/api/mockapi';
 import { getProductList } from '@/api/mockapi';
 import type { FoodData } from '@/components/product-list/FoodList';
 
+export const QUERY_KEYS = {
+    PRODUCT: "product",
+    PRODUCTS: "products",
+    FOOTERLINKS: "footerlinks",
+} as const;
+
 export const useFoodDetails = (id: string) => {
     return useQuery<FoodDetailsData>({
-        queryKey: ["product", id],
+        queryKey: [QUERY_KEYS.PRODUCT, id],
         queryFn: () => getProductById(id),
         enabled: !!id,
     });
@@ -16,7 +22,7 @@ export const useFoodDetails = (id: string) => {
 
 export const useFooterList = () => {
     return useQuery<FooterFields[], Error>({
-        queryKey: ['footerlinks'],
+        queryKey: [QUERY_KEYS.FOOTERLINKS],
         queryFn: getFooterList,
     }) ?? [];
 }
@@ -29,7 +35,7 @@ type PageResponse = {
 
 export const useProductList = () => {
     return useInfiniteQuery<PageResponse>({
-        queryKey: ['foods'],
+        queryKey: [QUERY_KEYS.PRODUCTS],
         queryFn: getProductList,
         initialPageParam: 1,
         getNextPageParam: (lastPage) => lastPage.nextPage,
