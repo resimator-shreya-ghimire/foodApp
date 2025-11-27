@@ -79,7 +79,7 @@ const NavigationBar = () => {
               </Popover>
             </li>
           </ul>
-          <Modal id="cart" content={<div> somethings </div>} />
+          <Modal id="cart" />
         </nav>
       </div>
     </header >

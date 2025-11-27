@@ -9,10 +9,9 @@ import { Button } from '@/components/button/Button';
 
 type ModalProps = {
     id: string;
-    content: React.ReactNode;
 };
 
-export const Modal = ({ id, content }: ModalProps) => {
+export const Modal = ({ id }: ModalProps) => {
     const { currentModal, hideModal, isOpen } = useModalStore();
 
     useEffect(() => {
@@ -20,7 +19,7 @@ export const Modal = ({ id, content }: ModalProps) => {
     }, [isOpen]);
 
     const modalRoot = usePortal('modal-root');
-    if (!modalRoot || !content) return null;
+    if (!modalRoot || !currentModal) return null;
     if (!isOpen) return null;
 
     const cancelModal = () => {
