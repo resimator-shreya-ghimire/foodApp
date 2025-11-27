@@ -27,7 +27,7 @@ const FoodDetails = () => {
 
   const { data, isPending, error } = useQuery<FoodDetailsData>({
     queryKey: ['product', id],
-    queryFn: () => getProductById(Number(id)),
+    queryFn: () => getProductById(id ?? ''),
   });
 
   if (isPending) {

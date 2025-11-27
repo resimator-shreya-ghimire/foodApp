@@ -1,17 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { getFooterList } from '@/api/mockapi';
-import { ContactForm } from '@/components/footer/ContactForm';
 import { Footer } from '@/components/footer/Footer';
-
-type links = {
-  name: string;
-  link: string;
-};
-
-export type FooterFields = {
-  header: string;
-  fields: links[];
-};
+import type { FooterFields } from '@/components/footer/Footer';
 
 export const FooterWrapper = () => {
   const { data } =
@@ -23,7 +13,6 @@ export const FooterWrapper = () => {
   return (
     <Footer
       className="max-w-4xl mx-auto px-4 flex gap-10"
-      children={<ContactForm />}
       footerFields={data}
     />
   );

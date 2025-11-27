@@ -6,6 +6,8 @@ export const Actions = ({ food }: { food?: FoodData }) => {
     const { addToCart, increaseQuantity, decreaseQuantity, cartItems } =
         useCart();
 
+    if (!food) return null;
+
     const cartItem = cartItems.find((item: FoodData) => item?.id === food?.id);
     const quantity = cartItem?.quantity ?? 0;
 

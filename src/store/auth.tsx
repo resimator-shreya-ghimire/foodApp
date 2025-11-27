@@ -1,4 +1,5 @@
-import { create } from 'zustand';
+import { create } from "zustand";
+import { persist } from "zustand/middleware";
 
 export type User = {
   email: string;
@@ -11,24 +12,28 @@ type AuthState = {
   logout: () => void;
 };
 
-export const useAuthStore = create<AuthState>((set) => ({
-  user: JSON.parse(localStorage.getItem('user') || 'null'),
-  token: localStorage.getItem('token'),
-
-  login: (userData, authToken) => {
-    set({
-      user: userData,
-      token: authToken,
-    });
-    localStorage.setItem('token', authToken);
-    localStorage.setItem('user', JSON.stringify(userData));
-  },
-
-  logout: () => {
-    set({
+export const useAuthStore = create<AuthState>()(
+  persist(
+    (set) => ({
       user: null,
       token: null,
-    });
-    localStorage.removeItem('token');
-  },
-}));
+
+      login: (userData, authToken) => {
+        set({
+          user: userData,
+          token: authToken,
+        });
+      },
+
+      logout: () => {
+        set({
+          user: null,
+          token: null,
+        });
+      },
+    }),
+    {
+      name: "auth",
+    }
+  )
+);

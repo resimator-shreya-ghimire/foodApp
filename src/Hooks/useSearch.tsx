@@ -1,13 +1,14 @@
 import { useSearchParams } from 'react-router-dom';
+import type { FoodData } from '@/components/product-list/FoodList';
 
-export function useSearch<T extends { [key: string]: string }>() {
+export function useSearch() {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const query = searchParams.get('q')?.toLowerCase() || '';
 
-  const filtered = (data: T[], searchKey: string) => {
+  const filtered = (data: FoodData[], searchKey: keyof FoodData) => {
     return data.filter((item) =>
-      item[searchKey]?.toLowerCase().includes(query)
+      item[searchKey]?.toString()?.toLowerCase()?.includes(query)
     );
   };
 

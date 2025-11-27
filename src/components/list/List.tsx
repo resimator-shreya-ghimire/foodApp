@@ -8,24 +8,25 @@ type FieldName = {
     avatar?: string;
 };
 
-type ListItems = {
+export type ListItems = {
+    id?: string;
     title?: string;
     metaDescription?: string;
     avatar?: string;
 };
 
-type ListProps = {
+type ListProps<T extends ListItems> = {
     header?: React.ReactNode;
     title?: string;
     footer?: React.ReactNode;
     mapFieldName?: FieldName;
-    items?: ListItems[];
-    itemsRenderer?: (items: ListItems[]) => React.ReactNode;
-    actions?: (item: ListItems) => React.ReactNode;
-    onItemClick?: (item: ListItems) => void;
+    items?: T[];
+    itemsRenderer?: (items: T[]) => React.ReactNode;
+    actions?: (item: T) => React.ReactNode;
+    onItemClick?: (item: T) => void;
 };
 
-export const List = ({
+export const List = <T extends ListItems>({
     header,
     title,
     footer,
@@ -34,11 +35,11 @@ export const List = ({
     itemsRenderer,
     actions,
     onItemClick,
-}: ListProps) => {
+}: ListProps<T>) => {
     const loadMoreRef = useRef<HTMLDivElement | null>(null);
     const pageSize = 8;
     const [page, setPage] = useState(0);
-    const [listItems, setListItems] = useState<ListItems[]>([]);
+    const [listItems, setListItems] = useState<T[]>([]);
 
     useEffect(() => {
         if (items && items.length) {
@@ -65,13 +66,13 @@ export const List = ({
         enabled: true,
     });
 
-    const mappedItems: ListItems[] = listItems?.map((item: ListItems) => {
+    const mappedItems: T[] = listItems?.map((item: T) => {
         if (mapFieldName) {
             return {
                 ...item,
-                title: item?.[mapFieldName?.title as keyof ListItems] ?? '',
-                metaDescription: item?.[mapFieldName?.metaDescription as keyof ListItems] ?? '',
-                avatar: item?.[mapFieldName?.avatar as keyof ListItems] ?? '',
+                title: item?.[mapFieldName?.title as keyof T] ?? '',
+                metaDescription: item?.[mapFieldName?.metaDescription as keyof T] ?? '',
+                avatar: item?.[mapFieldName?.avatar as keyof T] ?? '',
             };
         }
         return item;
@@ -84,7 +85,7 @@ export const List = ({
             {items?.length === 0 && <p className="text-gray-500">No items found</p>}
             {itemsRenderer ?
                 itemsRenderer(mappedItems)
-                : mappedItems.map((item?: ListItems) => (
+                : mappedItems.map((item) => (
                     <ListItem
                         key={item?.id}
                         title={item?.title}

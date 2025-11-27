@@ -1,6 +1,7 @@
 import SomeData from '@/api/mock-data-api/SomeData.json';
 import Footerlinks from '@/api/mock-data-api/Footerlinks.json';
 import type { FoodData } from '@/components/product-list/FoodList';
+import type { FooterFields } from '@/components/footer/Footer';
 
 interface FoodDetails extends FoodData {
   reviews: Array<{
@@ -11,31 +12,36 @@ interface FoodDetails extends FoodData {
   rating: number;
 }
 
-export const getProductList = async ({ pageParam = 1 }) => {
+export const getProductList = async ({ pageParam }: { pageParam: unknown }) => {
   const limit = 6;
-  const start = (pageParam - 1) * limit;
+  const page = (pageParam as number) || 1;
+  const start = (page - 1) * limit;
   const end = start + limit;
 
-  const items = SomeData.slice(start, end);
+  const items = SomeData.slice(start, end).map(item => ({
+    ...item,
+    id: String(item.id)
+  }));
 
   return {
     items,
-    nextPage: items.length < limit ? undefined : pageParam + 1,
+    nextPage: items.length < limit ? undefined : page + 1,
+    pageParam: page,
   };
 };
 
-export const getProductById = (id: number): Promise<FoodDetails> => {
+export const getProductById = (id: string): Promise<FoodDetails> => {
   return new Promise((resolve, reject) => {
-    const product = SomeData.find((item) => item.id === id);
+    const product = SomeData.find((item) => String(item.id) === id);
     console.log('product', product);
-    if (product) resolve(product as FoodDetails);
+    if (product) resolve({ ...product, id: String(product.id) } as FoodDetails);
     else reject("Product not found");
   });
 };
 
 
-export const getFooterList = () => {
-  return new Promise<any[]>(async (resolve, reject) => {
+export const getFooterList = (): Promise<FooterFields[]> => {
+  return new Promise(async (resolve, reject) => {
     try {
       resolve(Footerlinks);
     } catch (err) {
@@ -45,7 +51,7 @@ export const getFooterList = () => {
 };
 
 export const getCartCount = () => {
-  return new Promise<any[]>(async (resolve, reject) => {
+  return new Promise(async (resolve, reject) => {
     try {
       resolve(JSON.parse(localStorage.getItem('cartCount') ?? '0'));
     } catch (err) {

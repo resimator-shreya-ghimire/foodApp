@@ -19,7 +19,6 @@ const Login = () => {
   const { login } = useAuthStore();
   const { showToast } = useToastStore();
 
-
   const userString = localStorage.getItem('user');
   const user = userString ? JSON.parse(userString) : null;
 

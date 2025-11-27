@@ -9,7 +9,7 @@ import ListHeader from '@/components/product-list/ListHeader';
 import { Actions } from '@/components/product-list/Actions';
 
 export type FoodData = {
-  id?: number;
+  id?: string;
   name?: string;
   category?: string;
   quantity?: number;
@@ -40,7 +40,7 @@ export const FoodList = () => {
     isFetchingNextPage,
   } = useInfiniteQuery<PageResponse>({
     queryKey: ['foods'],
-    queryFn: ({ pageParam = 1 }) => getProductList({ pageParam: pageParam as number }),
+    queryFn: getProductList,
     initialPageParam: 1,
     getNextPageParam: (lastPage) => lastPage.nextPage,
   });
@@ -57,7 +57,8 @@ export const FoodList = () => {
   if (error) return <p>Error loading foods</p>;
   const filteredData = query ? filtered(foods, 'name') : foods;
 
-  const handleCardClick = (id: number) => {
+  const handleCardClick = (id: string | undefined) => {
+    if (!id) return;
     navigate(`/food/${id}`);
   };
 

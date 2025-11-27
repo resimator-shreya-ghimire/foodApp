@@ -4,37 +4,30 @@
   --color-primary: #000000;
   --color-background-gradient: linear-gradient(to right, #ff9a9e, #fecfef, #c1dfc4, #deecdd);
 
-  /* Example additional colors */
   --color-secondary: #fcd5ce;
   --color-tertiary: #fae1dd;
 
-  /* Spacing */
   --space-xs: 4px;
   --space-sm: 8px;
   --space-md: 16px;
   --space-lg: 24px;
   --space-xl: 32px;
 
-  /* Radius */
   --radius-sm: 4px;
   --radius-md: 8px;
   --radius-lg: 12px;
 
-  /* Shadows */
   --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.08);
   --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.1);
 
-  /* Typography */
   --font-sm: 0.85rem;
   --font-md: 1rem;
   --font-lg: 1.25rem;
 
-  /* Breakpoints */
   --break-sm: 480px;
   --break-md: 768px;
   --break-lg: 1024px;
 
-  /* Animations */
   --animate-slide-in-right: slide-in-right 0.3s ease-out;
   --animate-slide-out-right: slide-out-right 0.3s ease-in;
 }

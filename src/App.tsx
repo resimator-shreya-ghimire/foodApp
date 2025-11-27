@@ -11,10 +11,11 @@ import PageNotFound from '@/pages/PageNotFound.tsx';
 import Cart from '@/pages/Cart.tsx';
 import { ToastHost } from '@/components/Toast/ToastHost.tsx';
 import Layout from './pages/Layout.tsx';
+import { useAuthStore } from '@/store/auth.tsx';
 
 const PrivateRoute = () => {
-  let auth = { token: localStorage.getItem('token') };
-  return auth.token ? <Layout /> : <Navigate to="/login" />;
+  const auth = useAuthStore((state) => state.user);
+  return auth ? <Layout /> : <Navigate to="/login" />;
 };
 
 function App() {

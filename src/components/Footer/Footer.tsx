@@ -1,4 +1,13 @@
-import type { FooterFields } from '@/components/footer/FooterWrapper';
+
+export type links = {
+  name: string;
+  link: string;
+};
+
+export type FooterFields = {
+  header: string;
+  fields: links[];
+};
 
 type FooterProps = {
   children?: React.ReactNode;

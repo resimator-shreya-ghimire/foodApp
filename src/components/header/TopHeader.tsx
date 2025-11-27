@@ -1,19 +1,15 @@
 import { Button } from "@/components/button/Button";
-import { useState } from "react";
+import { useHeaderStore } from "@/store/header";
 
 const TopHeader = () => {
-  const [show, setShow] = useState(sessionStorage.getItem('show-top-header') ?? '' ? false : true);
 
-  const handleClose = () => {
-    sessionStorage.setItem('show-top-header', 'false');
-    setShow(false);
-  }
+  const { showTopHeader, setShowTopHeader } = useHeaderStore();
 
   return (
-    show &&
+    showTopHeader &&
     <div className=" text-sm p-2 flex justify-center items-center">
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat, iste.
-      <Button label="close" type="text" onClick={handleClose} className="px-sm py-xs" />
+      <Button label="close" type="text" onClick={() => setShowTopHeader(false)} className="px-sm py-xs" />
     </div>
   );
 };

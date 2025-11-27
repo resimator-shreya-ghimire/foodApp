@@ -10,7 +10,6 @@ import { Button } from '@/components/button/Button';
 import { TextArea } from '@/components/form/TextArea';
 
 export const ContactForm: React.FC = () => {
-  // Define the shape of the form data
   interface FormData {
     name: string;
     email: string;
