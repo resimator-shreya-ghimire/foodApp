@@ -1,14 +1,9 @@
-import { useQuery } from '@tanstack/react-query';
-import { getFooterList } from '@/api/mockapi';
+import { useFooterList } from '@/utils/query';
 import { Footer } from '@/components/footer/Footer';
-import type { FooterFields } from '@/components/footer/Footer';
 
 export const FooterWrapper = () => {
-  const { data } =
-    useQuery<FooterFields[], Error>({
-      queryKey: ['footerlinks'],
-      queryFn: getFooterList,
-    }) ?? [];
+  const { data } = useFooterList();
+  if (!data) return null;
 
   return (
     <Footer

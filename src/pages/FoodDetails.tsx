@@ -1,14 +1,13 @@
 
 import { useParams } from 'react-router-dom';
 import { Image } from '@/components/image/Image';
-import { getProductById } from '@/api/mockapi';
-import { useQuery } from '@tanstack/react-query';
-import type { FoodData } from '@/components/product-list/FoodList';
 import { StarRating } from '@/components/rating/StarRating';
 import { useToastStore } from '@/store/toastStore';
 import { Review } from '@/components/review/Review';
 import { Banner } from '@/components/banner/Banner';
 import { Actions } from '@/components/product-list/Actions';
+import { useFoodDetails } from '@/utils/query';
+import type { FoodData } from '@/components/product-list/FoodList';
 
 export type reviewProps = {
   reviews: Array<{
@@ -19,16 +18,13 @@ export type reviewProps = {
   rating: number;
 }
 
-interface FoodDetailsData extends FoodData, reviewProps { }
+export type FoodDetailsData = FoodData & reviewProps;
 
 const FoodDetails = () => {
   const { id } = useParams();
   const { showToast } = useToastStore();
 
-  const { data, isPending, error } = useQuery<FoodDetailsData>({
-    queryKey: ['product', id],
-    queryFn: () => getProductById(id ?? ''),
-  });
+  const { data, isPending, error } = useFoodDetails(id ?? '');
 
   if (isPending) {
     return (

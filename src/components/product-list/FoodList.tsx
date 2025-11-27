@@ -2,11 +2,10 @@ import { useRef } from 'react';
 import { useSearch } from '@/hooks/useSearch';
 import { useInfiniteScroll } from '@/hooks/useInfiniteScroll';
 import Card from '@/components/card/Card';
-import { getProductList } from '@/api/mockapi';
-import { useInfiniteQuery } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
 import ListHeader from '@/components/product-list/ListHeader';
 import { Actions } from '@/components/product-list/Actions';
+import { useProductList } from '@/utils/query';
 
 export type FoodData = {
   id?: string;
@@ -17,12 +16,6 @@ export type FoodData = {
   isVegetarian?: boolean;
   description?: string;
   image?: string;
-};
-
-type PageResponse = {
-  items: FoodData[];
-  nextPage?: number;
-  pageParam?: number;
 };
 
 export const FoodList = () => {
@@ -38,12 +31,7 @@ export const FoodList = () => {
     fetchNextPage,
     hasNextPage,
     isFetchingNextPage,
-  } = useInfiniteQuery<PageResponse>({
-    queryKey: ['foods'],
-    queryFn: getProductList,
-    initialPageParam: 1,
-    getNextPageParam: (lastPage) => lastPage.nextPage,
-  });
+  } = useProductList();
 
   const foods = data?.pages.flatMap((page) => page?.items) ?? [];
 
