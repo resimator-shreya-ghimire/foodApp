@@ -3,6 +3,7 @@ import { FooterWrapper } from '@/components/footer/FooterWrapper';
 import { Banner } from '@/components/banner/Banner';
 import { Image } from '@/components/image/Image';
 
+
 const Home = () => {
   return (
     <div>
@@ -10,21 +11,21 @@ const Home = () => {
         <Banner.Item className="relative w-full">
           <div className="absolute inset-0">
             <Image
-              src="https://media.istockphoto.com/id/1457433817/photo/group-of-healthy-food-for-flexitarian-diet.jpg?s=612x612&w=0&k=20&c=v48RE0ZNWpMZOlSp13KdF1yFDmidorO2pZTu2Idmd3M="
+              src="/keep-it-zesty-chicken-shawarma-2x1-mc-240712.webp"
               alt="Delicious food collection"
               className="w-full h-full object-cover opacity-90"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-white/30 via-white/20 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-black/20 to-transparent" />
           </div>
           <div className="relative z-10 h-full flex items-center px-12 md:px-20">
             <div className="max-w-2xl">
               <h1 className="text-5xl md:text-7xl font-bold text-pink mb-4 leading-tight text-shadow-lg">
                 Try Our <span className="text-orange-400 text-shadow-lg">Food</span>
               </h1>
-              <p className="text-xl md:text-2xl  mb-8 leading-relaxed text-black text-shadow-lg">
+              <p className="text-xl md:text-2xl  mb-8 leading-relaxed text-white text-shadow-lg">
                 Experience the finest flavors crafted with passion.
                 <br />
-                <span className="text-red-600 font-semibold text-shadow-lg">Fresh ingredients, unforgettable taste.</span>
+                <span className="text-red-200 font-semibold text-shadow-lg">Fresh ingredients, unforgettable taste.</span>
               </p>
             </div>
           </div>

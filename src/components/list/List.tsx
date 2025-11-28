@@ -1,6 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { ListItem } from '@/components/list/ListItem';
 import { useInfiniteScroll } from '@/hooks/useInfiniteScroll';
+import { Empty } from '@/components/empty/Empty';
 
 type FieldName = {
     title?: string;
@@ -38,19 +39,8 @@ export const List = <T extends ListItems>({
 }: ListProps<T>) => {
     const loadMoreRef = useRef<HTMLDivElement | null>(null);
     const pageSize = 8;
-    const [page, setPage] = useState(0);
-    const [listItems, setListItems] = useState<T[]>([]);
-
-    useEffect(() => {
-        if (items && items.length) {
-            const firstPage = items.slice(0, pageSize);
-            setListItems(firstPage);
-            setPage(1);
-        } else {
-            setListItems([]);
-            setPage(0);
-        }
-    }, [items]);
+    const [page, setPage] = useState(items && items.length ? 1 : 0);
+    const [listItems, setListItems] = useState<T[]>(items?.slice(0, pageSize) ?? []);
 
     useInfiniteScroll({
         ref: loadMoreRef,
@@ -82,7 +72,7 @@ export const List = <T extends ListItems>({
         <div className="flex flex-col gap-4">
             {header}
             {title && <h3 className="text-xl font-bold text-gray-800">{title}</h3>}
-            {items?.length === 0 && <p className="text-gray-500">No items found</p>}
+            {items?.length === 0 && <Empty message="No items found" />}
             {itemsRenderer ?
                 itemsRenderer(mappedItems)
                 : mappedItems.map((item) => (

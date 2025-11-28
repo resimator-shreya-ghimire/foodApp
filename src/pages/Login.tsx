@@ -47,7 +47,7 @@ const Login = () => {
       <Banner layout="flex-row" className="bg-white h-80% max-w-7xl mx-auto">
         <Banner.Item className="flex-1 overflow-hidden rounded-0">
           <Image
-            src="https://www.eatthis.com/wp-content/uploads/sites/4/2023/06/Duck-Donuts.jpg?quality=82&strip=1"
+            src="/Duck-Donuts.webp"
             alt="Delicious food"
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
           />

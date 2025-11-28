@@ -1,8 +1,7 @@
 import { StarRating } from "@/components/rating/StarRating";
 import { ReviewCard } from "@/components/review/ReviewCard";
 import type { reviewProps } from "@/pages/FoodDetails";
-
-
+import { Empty } from "@/components/empty/Empty";
 
 export const Review = ({ reviews, rating }: reviewProps) => {
     return (
@@ -26,9 +25,7 @@ export const Review = ({ reviews, rating }: reviewProps) => {
                     ))}
                 </div>
             ) : (
-                <div className="text-center py-12 bg-gray-50 rounded-lg">
-                    <p className="text-gray-500 text-lg">No reviews yet. Be the first to review!</p>
-                </div>
+                <Empty message="No reviews yet. Be the first to review!" />
             )}
         </div>
     )

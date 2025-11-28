@@ -1,12 +1,9 @@
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 
-type ModalVariant = "content" | "info";
-
 type ModalData = {
     id?: string;
     isOpen?: boolean;
-    variant?: ModalVariant;
     hasOpen?: boolean;
     title?: string;
     content?: React.ReactNode;
@@ -40,42 +37,10 @@ export const useModalStore = create<ModalStore>()(
                     return set({
                         modals: [
                             ...modals,
-                            { id: modal.id, isOpen: true, hasOpen: true },
+                            { id: modal.id, isOpen: true },
                         ],
                         isOpen: true,
                     });
-                }
-
-                if (modal.variant === "content") {
-                    return set({
-                        modals: modals.map((m) =>
-                            m.id === modal.id ? { id: modal.id, isOpen: true, hasOpen: true } : m
-                        ),
-                        currentModal: modal,
-                        isOpen: true,
-                    });
-                }
-
-                if (modal.variant === "info") {
-                    if (!target.hasOpen) {
-                        return set({
-                            modals: modals.map((m) =>
-                                m.id === modal.id
-                                    ? { id: modal.id, isOpen: true, hasOpen: true }
-                                    : m
-                            ),
-                            currentModal: modal,
-                            isOpen: true,
-                        });
-                    } else {
-                        return set({
-                            modals: modals.map((m) =>
-                                m.id === modal.id ? { id: modal.id, isOpen: false } : m
-                            ),
-                            currentModal: null,
-                            isOpen: false,
-                        });
-                    }
                 }
             },
 
