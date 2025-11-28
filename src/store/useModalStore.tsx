@@ -23,7 +23,7 @@ type ModalStore = {
 
 export const useModalStore = create<ModalStore>()(
     persist(
-        (set, get) => ({
+        (set) => ({
             modals: [],
             currentModal: null,
             isOpen: false,
@@ -31,26 +31,17 @@ export const useModalStore = create<ModalStore>()(
                 if (!modal?.id) {
                     modal.id = Date.now().toString();
                 }
-                const { modals } = get();
-                const target = modals.find((m) => m.id === modal.id);
-                if (!target) {
-                    return set({
-                        modals: [
-                            ...modals,
-                            { id: modal.id, isOpen: true },
-                        ],
-                        isOpen: true,
-                    });
-                }
+                set({
+                    isOpen: true,
+                    currentModal: modal,
+                });
             },
 
             hideModal: () => {
-                set((state) => ({
-                    modals: state.modals.map((m) =>
-                        m.id === state.currentModal?.id ? { ...m, isOpen: false } : m
-                    ),
+                set({
                     isOpen: false,
-                }));
+                    currentModal: null,
+                });
             },
         }),
         {

@@ -21,6 +21,11 @@ export const Modal = () => {
         currentModal?.onCancel?.()
     };
 
+    const confirmModal = () => {
+        hideModal(currentModal?.id);
+        currentModal?.onConfirm?.()
+    };
+
     return (
         <div className="fixed inset-0 flex items-center justify-center z-50 bg-black/30">
             <div className="bg-white rounded w-[500px] flex flex-col items-center mx-auto p-6 shadow-lg">
@@ -44,7 +49,7 @@ export const Modal = () => {
                         )}
                         {currentModal?.confirmText && (
                             <Button
-                                onClick={() => currentModal?.onConfirm?.()}
+                                onClick={confirmModal}
                                 label={currentModal?.confirmText}
                                 variant='add'
                             />

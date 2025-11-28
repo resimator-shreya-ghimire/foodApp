@@ -1,9 +1,36 @@
 import { useCart } from "@/store/cart";
 import { List } from "@/components/list/List";
 import { Actions } from "@/components/product-list/Actions";
+import { useModalStore } from "@/store/useModalStore";
+import { Button } from "@/components/button/Button";
 
 const Cart = () => {
     const { cartItems, clearCart } = useCart();
+    const { showModal } = useModalStore();
+
+    const handleClearCart = () => {
+        if (!cartItems?.length) return;
+        showModal({
+            title: "Clear Cart",
+            content: <p>Are you sure you want to clear your cart?</p>,
+            onConfirm: clearCart,
+            onCancel: () => { },
+            confirmText: "Clear",
+            cancelText: "Cancel",
+        });
+    };
+
+    const handleCheckout = () => {
+        if (!cartItems?.length) return;
+        showModal({
+            title: "Checkout",
+            content: <p>Are you sure you want to checkout?</p>,
+            onConfirm: clearCart,
+            onCancel: () => { },
+            confirmText: "Checkout",
+            cancelText: "Cancel",
+        });
+    };
 
     return (
         <div className="max-w-6xl mx-auto px-4 py-8">
@@ -12,8 +39,11 @@ const Cart = () => {
                 items={cartItems ?? []}
                 mapFieldName={{ title: "name", metaDescription: "price", avatar: "image" }}
                 actions={(item) => <Actions food={item} />}
-                footer={<div className="flex justify-end"><button onClick={clearCart} className="px-6 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300 transition-colors">Clear Cart</button></div>}
+                footer={cartItems?.length ? <div className="flex justify-end"><Button onClick={handleClearCart} label="Clear Cart" variant="delete" /></div> : null}
             />
+            <h3 className="text-xl font-semibold">Total: {cartItems?.reduce((acc, item) => acc + (item?.price ?? 0) * (item?.quantity ?? 1), 0) ?? 0}</h3>
+            <Button onClick={handleCheckout} label="Checkout" variant="add" />
+
         </div>
     );
 };

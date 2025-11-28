@@ -20,7 +20,7 @@ type FooterProps = {
 export const Footer = ({
   children,
   className = '',
-  copyrightText = `© ${new Date().getFullYear()} MyFoodApp`,
+  copyrightText = `MyFoodApp`,
   footerFields = [],
 }: FooterProps) => {
   return (
@@ -48,7 +48,7 @@ export const Footer = ({
           </div>
         )}
       </div>
-      <div className="text-sm opacity-80 px-5">{copyrightText}</div>
+      <div className="text-sm opacity-80 px-5">{`© ${new Date().getFullYear()} ${copyrightText}`}</div>
     </footer>
   );
 };
