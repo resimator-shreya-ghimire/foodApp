@@ -72,19 +72,21 @@ export const List = <T extends ListItems>({
         <div className="flex flex-col gap-4">
             {header}
             {title && <h3 className="text-xl font-bold text-gray-800">{title}</h3>}
-            {items?.length === 0 && <Empty message="No items found" />}
-            {itemsRenderer ?
+            {items?.length === 0 ? (
+                <Empty message="No items found" />
+            ) : itemsRenderer ? (
                 itemsRenderer(mappedItems)
-                : mappedItems.map((item) => (
+            ) : (
+                mappedItems.map((item) => (
                     <ListItem
-                        key={item?.id}
                         title={item?.title}
                         metaDescription={item?.metaDescription}
                         avatar={item?.avatar}
-                        onClick={() => onItemClick && onItemClick(item)}
+                        onClick={() => onItemClick?.(item)}
                         actions={actions ? actions(item) : null}
                     />
-                ))}
+                ))
+            )}
             <div ref={loadMoreRef} className="h-4" />
             {footer}
         </div>

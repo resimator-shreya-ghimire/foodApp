@@ -30,15 +30,6 @@ export function Image({
     if (shouldLoad) setShouldLoadImage(true);
   }, [shouldLoad]);
 
-  useEffect(() => {
-    if (shouldLoadImage && imgRef.current) {
-      const imgElement = imgRef.current;
-      if (src && src !== placeholder) {
-        imgElement.src = src;
-      }
-    }
-  }, [shouldLoadImage, src, placeholder]);
-
   const handleImageLoad = () => {
     setImageLoaded(true);
   };
