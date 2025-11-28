@@ -2,8 +2,7 @@ import { useToastStore } from "@/store/toastStore";
 import { ToastItem } from "@/components/Toast/ToastItem";
 
 export const ToastHost = () => {
-    const toasts = useToastStore((s) => s.toasts);
-    const hideToast = useToastStore((s) => s.hideToast);
+    const { toasts, hideToast } = useToastStore();
 
     if (toasts.length === 0) return null;
 

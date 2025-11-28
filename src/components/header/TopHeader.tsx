@@ -5,8 +5,9 @@ const TopHeader = () => {
 
   const { showTopHeader, setShowTopHeader } = useHeaderStore();
 
+  if (!showTopHeader) return null;
+
   return (
-    showTopHeader &&
     <div className=" text-sm p-2 flex justify-center items-center">
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat, iste.
       <Button label="close" type="text" onClick={() => setShowTopHeader(false)} className="px-sm py-xs" />

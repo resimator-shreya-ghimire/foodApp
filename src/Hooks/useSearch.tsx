@@ -1,8 +1,8 @@
 import { useSearchParams } from 'react-router-dom';
 import type { FoodData } from '@/components/product-list/FoodList';
 
-export function useSearch() {
-  const [searchParams, setSearchParams] = useSearchParams();
+export function useSearch(params?: { value?: string }) {
+  const [searchParams, setSearchParams] = useSearchParams() ?? params?.value;
 
   const query = searchParams.get('q')?.toLowerCase() || '';
 

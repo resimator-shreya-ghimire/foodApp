@@ -21,7 +21,7 @@ type ModalStore = {
     currentModal: ModalData | null;
     isOpen: boolean;
     showModal: (modal: ModalData) => void;
-    hideModal: (id: string) => void;
+    hideModal: (id: string | undefined) => void;
 };
 
 export const useModalStore = create<ModalStore>()(

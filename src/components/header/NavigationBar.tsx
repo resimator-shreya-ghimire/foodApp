@@ -8,8 +8,6 @@ import { Popover } from '@/components/popover/Popover.tsx';
 import { Button } from '@/components/button/Button.tsx';
 import { useCart } from '@/store/cart';
 import { useModalStore } from '@/store/useModalStore';
-import { Modal } from '@/components/modal/Modal.tsx';
-
 
 const NavigationBar = () => {
   const { user, logout } = useAuthStore();
@@ -79,7 +77,6 @@ const NavigationBar = () => {
               </Popover>
             </li>
           </ul>
-          <Modal id="cart" />
         </nav>
       </div>
     </header >

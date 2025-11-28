@@ -1,37 +1,31 @@
 import { useEffect } from 'react';
-import { createPortal } from 'react-dom';
 import { Icon } from '@/components/icon/Icon';
-import { usePortal } from '@/hooks/usePortal';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { useModalStore } from '@/store/useModalStore';
 import { useLockBodyScroll } from '@/hooks/useLockBodyScroll';
 import { Button } from '@/components/button/Button';
 
-type ModalProps = {
-    id: string;
-};
 
-export const Modal = ({ id }: ModalProps) => {
+export const Modal = () => {
     const { currentModal, hideModal, isOpen } = useModalStore();
 
     useEffect(() => {
         useLockBodyScroll({ lock: isOpen });
     }, [isOpen]);
 
-    const modalRoot = usePortal('modal-root');
-    if (!modalRoot || !currentModal) return null;
+    if (!currentModal) return null;
     if (!isOpen) return null;
 
     const cancelModal = () => {
-        hideModal(id);
+        hideModal(currentModal?.id);
         currentModal?.onCancel?.()
     };
 
-    return createPortal(
+    return (
         <div className="fixed inset-0 flex items-center justify-center z-50 bg-black/30">
             <div className="bg-white rounded w-[500px] flex flex-col items-center mx-auto p-6 shadow-lg">
                 <div className="flex w-full justify-end p-4">
-                    <Icon icon={faXmark} onClick={() => hideModal(id)} />
+                    <Icon icon={faXmark} onClick={() => hideModal(currentModal?.id)} />
                 </div>
                 <div className="w-full max-w-md ">
                     <h2 className="text-xl font-semibold mb-4">{currentModal?.title}</h2>
@@ -59,7 +53,6 @@ export const Modal = ({ id }: ModalProps) => {
                 </div>
 
             </div>
-        </div>,
-        modalRoot
+        </div>
     );
 };
