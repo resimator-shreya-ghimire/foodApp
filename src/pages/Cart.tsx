@@ -4,6 +4,7 @@ import { Actions } from "@/components/product-list/Actions";
 import { useModalStore } from "@/store/useModalStore";
 import { Button } from "@/components/button/Button";
 import { Empty } from "@/components/empty/Empty";
+import { Image } from "@/components/image/Image";
 
 const Cart = () => {
     const { cartItems, clearCart } = useCart();
@@ -41,6 +42,16 @@ const Cart = () => {
                 title="Your Cart"
                 items={cartItems ?? []}
                 mapFieldName={{ title: "name", metaDescription: "price", avatar: "image" }}
+                // itemsRenderer={(items) => items.map((item) => (
+                //     <div className="flex items-center gap-4">
+                //         <Image src={item?.image ?? ""} alt={item?.name ?? ""} className="w-16 h-16 object-cover" />
+                //         <div className="">
+                //             <h3 className="text-lg font-semibold">{item?.name}</h3>
+                //             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatem sint, delectus enim adipisci laboriosam dignissimos?
+                //         </div>
+                //         <Actions food={item} />
+                //     </div>
+                // ))}
                 actions={(item) => <Actions food={item} />}
                 footer={cartItems?.length ? <div className="flex justify-end"><Button onClick={handleClearCart} label="Clear Cart" variant="delete" /></div> : null}
             />

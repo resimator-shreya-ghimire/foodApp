@@ -3,10 +3,9 @@ import { FooterWrapper } from '@/components/footer/FooterWrapper';
 import { Banner } from '@/components/banner/Banner';
 import { Image } from '@/components/image/Image';
 
-
 const Home = () => {
   return (
-    <div>
+    <>
       <Banner layout="flex-row" className="relative bg-gradient-to-r from-orange-500 to-red-500 h-[500px] max-w-full mx-auto overflow-hidden">
         <Banner.Item className="relative w-full">
           <div className="absolute inset-0">
@@ -31,10 +30,9 @@ const Home = () => {
           </div>
         </Banner.Item>
       </Banner>
-
       <FoodList />
       <FooterWrapper />
-    </div>
+    </>
   );
 };
 

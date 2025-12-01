@@ -1,4 +1,5 @@
 import { Image } from '@/components/image/Image';
+import { Popover } from '@/components/popover/Popover';
 
 type ListItemProps = {
     title?: string;
@@ -13,15 +14,28 @@ export const ListItem = ({ title, metaDescription, avatar, actions, onClick }: L
         <div
             className="flex items-center p-4 bg-white rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow cursor-pointer gap-4"
         >
-            {avatar && (
-                <div className="flex-shrink-0">
-                    <Image
-                        src={avatar}
-                        alt={title || 'Item avatar'}
-                        className="w-16 h-16 rounded-full object-cover"
-                    />
-                </div>
-            )}
+            <Popover
+                direction="right"
+                content={
+                    <div className="flex flex-col gap-3">
+                        <Image
+                            src={avatar}
+                            alt={title || 'Item avatar'}
+                            className="w-50 h-50 object-cover"
+                        />
+                    </div>
+                }
+            >
+                {avatar && (
+                    <div className="flex-shrink-0">
+                        <Image
+                            src={avatar}
+                            alt={title || 'Item avatar'}
+                            className="w-20 h-20 rounded-full object-cover"
+                        />
+                    </div>
+                )}
+            </Popover>
             <div className="flex-grow min-w-0">
                 {title && <h4 className="text-lg font-semibold text-gray-900 truncate" onClick={onClick}>{title}</h4>}
                 {metaDescription && <p className="text-sm text-gray-500 line-clamp-2">{metaDescription}</p>}
