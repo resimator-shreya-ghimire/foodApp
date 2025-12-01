@@ -8,9 +8,10 @@ type BannerProps = {
 
 export const Banner = ({ layout = "flex-row", className = "", children }: BannerProps) => {
     return (
-        <div className={`flex ${layout} ${className}`}>
+        <div className={`flex flex-col sm:flex-row ${layout} ${className}`}>
             {children}
         </div>
+
     )
 }
 

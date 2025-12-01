@@ -3,6 +3,7 @@ import { List } from "@/components/list/List";
 import { Actions } from "@/components/product-list/Actions";
 import { useModalStore } from "@/store/useModalStore";
 import { Button } from "@/components/button/Button";
+import { Empty } from "@/components/empty/Empty";
 
 const Cart = () => {
     const { cartItems, clearCart } = useCart();
@@ -31,6 +32,8 @@ const Cart = () => {
             cancelText: "Cancel",
         });
     };
+
+    if (cartItems?.length === 0) return <Empty message="No items in cart" />;
 
     return (
         <div className="max-w-6xl mx-auto px-4 py-8">

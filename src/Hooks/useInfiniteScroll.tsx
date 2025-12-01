@@ -1,7 +1,5 @@
 import { useEffect, type RefObject } from "react"
 
-
-
 type InfiniteScrollProps = {
     ref?: RefObject<HTMLElement | null>,
     threshold?: number,

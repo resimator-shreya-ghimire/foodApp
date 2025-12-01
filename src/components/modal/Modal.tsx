@@ -28,8 +28,8 @@ export const Modal = () => {
 
     return (
         <div className="fixed inset-0 flex items-center justify-center z-50 bg-black/30">
-            <div className="bg-white rounded w-[500px] flex flex-col items-center mx-auto p-6 shadow-lg">
-                <div className="flex w-full justify-end p-4">
+            <div className="bg-white rounded-lg  flex flex-col items-center mx-auto px-6 py-4 shadow-lg">
+                <div className="flex w-full justify-end p-xs">
                     <Icon icon={faXmark} onClick={() => hideModal(currentModal?.id)} />
                 </div>
                 <div className="w-full max-w-md ">

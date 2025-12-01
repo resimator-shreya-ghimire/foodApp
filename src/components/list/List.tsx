@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useMemo, useEffect } from 'react';
 import { ListItem } from '@/components/list/ListItem';
 import { useInfiniteScroll } from '@/hooks/useInfiniteScroll';
 import { Empty } from '@/components/empty/Empty';
@@ -42,6 +42,11 @@ export const List = <T extends ListItems>({
     const [page, setPage] = useState(items && items.length ? 1 : 0);
     const [listItems, setListItems] = useState<T[]>(items?.slice(0, pageSize) ?? []);
 
+    useEffect(() => {
+        setListItems(items?.slice(0, pageSize) ?? []);
+        setPage(items && items.length ? 1 : 0);
+    }, [items]);
+
     useInfiniteScroll({
         ref: loadMoreRef,
         onIntersect: () => {
@@ -56,7 +61,7 @@ export const List = <T extends ListItems>({
         enabled: true,
     });
 
-    const mappedItems: T[] = listItems?.map((item: T) => {
+    const mappedItems: T[] = useMemo(() => listItems?.map((item: T) => {
         if (mapFieldName) {
             return {
                 ...item,
@@ -66,7 +71,7 @@ export const List = <T extends ListItems>({
             };
         }
         return item;
-    }) ?? [];
+    }) ?? [], [listItems]);
 
     return (
         <div className="flex flex-col gap-4">

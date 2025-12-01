@@ -43,9 +43,9 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen w-full flex items-center justify-center bg-gradient-to-br from-orange-50 via-pink-50 to-purple-50">
+    <div className="min-h-screen w-full flex items-center justify-center bg-linear-to-br from-orange-50 via-pink-50 to-purple-50">
       <Banner layout="flex-row" className="bg-white h-80% max-w-7xl mx-auto">
-        <Banner.Item className="flex-1 overflow-hidden rounded-0">
+        <Banner.Item className="hidden md:block flex-1 overflow-hidden rounded-0">
           <Image
             src="/Duck-Donuts.webp"
             alt="Delicious food"
