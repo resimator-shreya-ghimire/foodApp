@@ -1,4 +1,4 @@
-import { useQuery, useInfiniteQuery } from "@tanstack/react-query";
+import { useQuery, useInfiniteQuery, useSuspenseQuery } from "@tanstack/react-query";
 import { getProductById } from "@/api/mockapi";
 import type { FoodDetailsData } from "@/pages/FoodDetails";
 import type { FooterFields } from '@/components/footer/Footer';
@@ -21,7 +21,7 @@ export const useFoodDetails = (id: string) => {
 };
 
 export const useFooterList = () => {
-    return useQuery<FooterFields[], Error>({
+    return useSuspenseQuery<FooterFields[], Error>({
         queryKey: [QUERY_KEYS.FOOTERLINKS],
         queryFn: getFooterList,
     }) ?? [];
