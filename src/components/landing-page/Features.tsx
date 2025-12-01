@@ -23,7 +23,7 @@ const featuresData = [
 ]
 export const Features = () => {
     return (
-        <div className="max-w-5xl mx-auto pt-[100px]">
+        <div className="max-w-5xl mx-auto pt-component-lg">
             <h2 className="text-3xl font-bold text-center">Features</h2>
             <p className="text-lg py-4 text-center">Find the best food for you and your family</p>
             <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 py-12">

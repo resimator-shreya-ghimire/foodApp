@@ -6,6 +6,7 @@ import { faCartShopping, faUser, faBars, faTimes, faHamburger } from "@fortaweso
 import { Popover } from "@/components/popover/Popover.tsx";
 import { Button } from "@/components/button/Button.tsx";
 import { useCart } from "@/store/cart";
+import TopHeader from "@/components/header/TopHeader";
 
 const NavigationBar = () => {
   const navigate = useNavigate();
@@ -19,6 +20,7 @@ const NavigationBar = () => {
 
   return (
     <header className="px-3 py-4 w-full fixed top-0 z-50">
+      <TopHeader />
       <div className="flex items-center justify-between w-full sticky top-0 z-50 bg-white/80 px-lg py-4 px-8 rounded-lg max-w-6xl mx-auto border-solid border-white border-2 shadow-lg">
         <div
           className="text-xl font-semibold cursor-pointer"
