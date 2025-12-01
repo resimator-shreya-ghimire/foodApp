@@ -34,24 +34,14 @@ const Cart = () => {
         });
     };
 
-    if (cartItems?.length === 0) return <Empty className="p-component-lg" message="No items in cart" />;
+    if (cartItems?.length === 0) return <Empty className="pt-component-lg" message="No items in cart" />;
 
     return (
-        <div className="max-w-6xl mx-auto px-4 py-8 p-component-lg">
+        <div className="max-w-6xl mx-auto px-4 py-8 pt-component-lg">
             <List
                 title="Your Cart"
                 items={cartItems ?? []}
                 mapFieldName={{ title: "name", metaDescription: "price", avatar: "image" }}
-                // itemsRenderer={(items) => items.map((item) => (
-                //     <div className="flex items-center gap-4">
-                //         <Image src={item?.image ?? ""} alt={item?.name ?? ""} className="w-16 h-16 object-cover" />
-                //         <div className="">
-                //             <h3 className="text-lg font-semibold">{item?.name}</h3>
-                //             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatem sint, delectus enim adipisci laboriosam dignissimos?
-                //         </div>
-                //         <Actions food={item} />
-                //     </div>
-                // ))}
                 actions={(item) => <Actions food={item} />}
                 footer={cartItems?.length ? <div className="flex justify-end"><Button onClick={handleClearCart} label="Clear Cart" variant="delete" /></div> : null}
             />

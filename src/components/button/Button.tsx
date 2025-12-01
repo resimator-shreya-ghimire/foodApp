@@ -29,8 +29,8 @@ export const Button = ({
     variant === 'primary'
       ? 'bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 text-white hover:from-orange-600 hover:via-pink-600 hover:to-purple-700 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5'
       : variant === 'delete'
-        ? 'bg-red-500 text-white hover:bg-red-600 shadow-md hover:shadow-lg'
-        : 'bg-green-500 text-white hover:bg-green-600 shadow-md hover:shadow-lg';
+        ? 'bg-red-400 text-white hover:bg-red-600 shadow-md hover:shadow-lg'
+        : 'bg-green-400 text-white hover:bg-green-600 shadow-md hover:shadow-lg';
 
   const disabledClasses = disabled ? 'opacity-50 cursor-not-allowed' : '';
   const loadingCursor = loading ? 'cursor-wait' : '';

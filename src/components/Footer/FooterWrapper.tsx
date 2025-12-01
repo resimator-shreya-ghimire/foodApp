@@ -1,6 +1,8 @@
+import { Suspense } from 'react';
 import { useFooterList } from '@/utils/query';
 import { Footer } from '@/components/footer/Footer';
-import { Suspense } from 'react';
+import { IconRenderer } from './IconRenderer';
+
 
 export const FooterWrapper = () => {
   const { data } = useFooterList();
@@ -8,8 +10,9 @@ export const FooterWrapper = () => {
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <Footer
-        className="max-w-4xl mx-auto px-4 flex gap-10"
+        className="max-w-4xl mx-auto px-4 flex flex-col items-center gap-10"
         footerFields={data}
+        children={<IconRenderer />}
       />
     </Suspense>
   );

@@ -5,12 +5,11 @@ import { Features } from '@/components/landing-page/Features';
 
 const Home = () => {
   return (
-    <div>
+    <div className="flex flex-col gap-15">
       <WebBanner />
       <Features />
       <FoodList />
       <FooterWrapper />
-
     </div>
   );
 };
