@@ -55,7 +55,7 @@ export const ToastItem = ({ toast, onClose }: ToastItemProps) => {
             className={`
                 ${isExiting ? 'animate-slide-out-right' : 'animate-slide-in-right'}
                 border-l-4 shadow-lg p-4 flex items-start gap-3 min-w-[300px]
-                transition-all duration-300 z-10
+                transition-all duration-300 z-10 bg-primary/100
             `}
         >
             <Icon icon={styles.icon} className={`${styles.iconColor} text-xl mt-0.5`} />

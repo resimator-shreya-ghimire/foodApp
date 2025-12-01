@@ -7,7 +7,7 @@ export default function Layout() {
         <div>
             <Header />
             <Modal />
-            <main className="p-4">
+            <main>
                 <Outlet />
             </main>
         </div>

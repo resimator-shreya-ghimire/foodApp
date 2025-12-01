@@ -12,10 +12,11 @@ import Cart from '@/pages/Cart.tsx';
 import { ToastHost } from '@/components/Toast/ToastHost.tsx';
 import Layout from './pages/Layout.tsx';
 import { useAuthStore } from '@/store/auth.tsx';
+import Product from './pages/Product.tsx';
 
 const PrivateRoute = () => {
-  const auth = useAuthStore((state) => state.user);
-  return auth ? <Layout /> : <Navigate to="/login" />;
+  const { token } = useAuthStore();
+  return token ? <Layout /> : <Navigate to="/login" />;
 };
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
         <Route element={<PrivateRoute />}>
           <Route path="/" element={<Home />} />
           <Route path="/food/:id" element={<FoodDetails />} />
+          <Route path="/product" element={<Product />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="*" element={<PageNotFound />} />
         </Route>

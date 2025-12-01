@@ -51,7 +51,7 @@ export const FoodList = () => {
   };
 
   return (
-    <section className="max-w-5xl mx-auto p-6">
+    <section className="max-w-5xl mx-auto p-6 pt-component-lg">
       <ListHeader />
       <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
         {filteredData.map((food) => (
@@ -59,6 +59,7 @@ export const FoodList = () => {
             key={food?.id}
             title={food?.name}
             image={food?.image}
+            className='bg-white border border-gray-200 rounded-xl shadow-md overflow-hidden transition'
             description={food?.description}
             price={food?.price}
             onClick={() => handleCardClick(food?.id)}

@@ -16,16 +16,13 @@ type LoginForm = {
 
 const Login = () => {
   const navigate = useNavigate();
-  const { login } = useAuthStore();
+  const { login, user } = useAuthStore();
   const { showToast } = useToastStore();
-
-  const userString = localStorage.getItem('user');
-  const user = userString ? JSON.parse(userString) : null;
 
   const methods = useForm({
     resolver: yupResolver(loginFormSchema),
     defaultValues: {
-      email: user?.email,
+      email: user?.email || '',
       password: '',
     },
   });
@@ -52,7 +49,7 @@ const Login = () => {
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
           />
         </Banner.Item>
-        <Banner.Item className="flex-1 backdrop-blur-sm">
+        <Banner.Item className="flex-1 backdrop-blur-sm items-center">
           <div className="w-full max-w-md px-md">
             <div className="text-center pb-md">
               <p className="text-gray-600">Enter your credentials to continue</p>

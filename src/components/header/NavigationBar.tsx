@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuthStore } from "@/store/auth.tsx";
 import { Icon } from "@/components/icon/Icon.tsx";
-import { faCartShopping, faUser, faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { faCartShopping, faUser, faBars, faTimes, faHamburger } from "@fortawesome/free-solid-svg-icons";
 import { Popover } from "@/components/popover/Popover.tsx";
 import { Button } from "@/components/button/Button.tsx";
 import { useCart } from "@/store/cart";
@@ -14,13 +14,12 @@ const NavigationBar = () => {
   const [open, setOpen] = useState(false);
 
   const handleLogout = () => {
-    if (user?.email) sessionStorage.setItem("user-email", user?.email);
     logout();
   };
 
   return (
-    <header className="w-full shadow-sm">
-      <div className="max-w-6xl mx-auto px-3 py-4 flex items-center justify-between">
+    <header className="px-3 py-4 w-full fixed top-0 z-50">
+      <div className="flex items-center justify-between w-full sticky top-0 z-50 bg-white/80 px-lg py-4 px-8 rounded-lg max-w-6xl mx-auto border-solid border-white border-2 shadow-lg">
         <div
           className="text-xl font-semibold cursor-pointer"
           onClick={() => navigate("/")}
@@ -29,8 +28,13 @@ const NavigationBar = () => {
         </div>
 
         <nav className="hidden sm:flex items-center gap-6 text-gray-700">
+          <Icon
+            icon={faHamburger}
+            className="text-xl cursor-pointer"
+            onClick={() => navigate("/product")}
+          />
           <div className="relative">
-            <span className="absolute -top-2 -right-2 bg-red-500 text-white w-5 h-5 text-xs rounded-full flex items-center justify-center">
+            <span className="absolute top-2 right-2 bg-red-500 text-white w-5 h-5 text-xs rounded-full flex items-center justify-center">
               {cartCount}
             </span>
             <Icon
@@ -39,7 +43,6 @@ const NavigationBar = () => {
               onClick={() => navigate("/cart")}
             />
           </div>
-
           <Popover
             direction="bottom"
             content={

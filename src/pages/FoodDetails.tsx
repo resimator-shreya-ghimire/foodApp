@@ -8,6 +8,7 @@ import { Banner } from '@/components/banner/Banner';
 import { Actions } from '@/components/product-list/Actions';
 import { useFoodDetails } from '@/utils/query';
 import type { FoodData } from '@/components/product-list/FoodList';
+import { Empty } from '@/components/empty/Empty';
 
 export type reviewProps = {
   reviews: Array<{
@@ -35,17 +36,15 @@ const FoodDetails = () => {
   if (error) {
     showToast('error', 'Error fetching product details');
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-red-600 text-lg">Error loading product details</div>
-      </div>
+      <Empty message="Error loading product details" className="p-component-lg" />
     );
   }
 
   if (!data) return null;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 py-8">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 py-8 p-component-lg">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 p-component-lg">
         <Banner className='bg-white rounded-2xl shadow-xl overflow-hidden mb-8'>
           <Banner.Item className='w-1/2 relative'>
             <div className="aspect-square rounded-xl overflow-hidden bg-gray-100 shadow-lg p-sm">

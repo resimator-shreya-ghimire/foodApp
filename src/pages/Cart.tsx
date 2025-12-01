@@ -34,10 +34,10 @@ const Cart = () => {
         });
     };
 
-    if (cartItems?.length === 0) return <Empty message="No items in cart" />;
+    if (cartItems?.length === 0) return <Empty className="p-component-lg" message="No items in cart" />;
 
     return (
-        <div className="max-w-6xl mx-auto px-4 py-8">
+        <div className="max-w-6xl mx-auto px-4 py-8 p-component-lg">
             <List
                 title="Your Cart"
                 items={cartItems ?? []}

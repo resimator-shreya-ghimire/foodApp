@@ -1,10 +1,13 @@
 import { Image } from '@/components/image/Image';
+import type { IconDefinition } from "@fortawesome/free-solid-svg-icons";
+import { Icon } from "@/components/icon/Icon";
 
 type CardProps = {
   title?: string;
   header?: React.ReactNode | null;
   children?: React.ReactNode | null;
   image?: string;
+  icon?: IconDefinition;
   category?: string;
   description?: string;
   price?: number;
@@ -12,12 +15,15 @@ type CardProps = {
   actions?: React.ReactNode | null;
   hoverEffect?: boolean;
   onClick?: () => void;
+  iconColor?: string;
 };
 
 export const Card = ({
   title = '',
   header = null,
   image = '',
+  icon,
+  iconColor = '',
   children = null,
   description = '',
   price = 0,
@@ -27,15 +33,22 @@ export const Card = ({
   onClick = () => { },
 }: CardProps) => {
   return (
-    <div className={`mb-4 ${className}`}>
+    <div className={`mb-4`}>
       <div
-        className={`bg-white border border-gray-200 rounded-xl shadow-md overflow-hidden transition ${hoverEffect ? 'hover:shadow-lg hover:scale-105' : ''}`}
+        className={`${hoverEffect ? 'hover:shadow-lg hover:scale-105' : ''} ${className}`}
       >
         {image && (
           <Image
             src={image}
             alt="card-image"
             className="w-full h-48 object-cover"
+          />
+        )}
+
+        {icon && (
+          <Icon
+            icon={icon}
+            className={`text-6xl p-2 ${iconColor}`}
           />
         )}
 
