@@ -60,13 +60,9 @@ export const ToastItem = ({ toast, onClose }: ToastItemProps) => {
         >
             <Icon icon={styles.icon} className={`${styles.iconColor} text-xl mt-0.5`} />
             <p className={`${styles.text} flex-1`}>{toast.message}</p>
-            <button
-                onClick={handleClose}
-                className="text-gray-400 hover:text-gray-600 transition-colors"
-                aria-label="Close toast"
-            >
-                <Icon icon={faTimes} className="text-lg" />
-            </button>
+
+            <Icon icon={faTimes} className="text-lg cursor-pointer" onClick={handleClose} />
+
         </div>
     );
 };
