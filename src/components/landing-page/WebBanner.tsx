@@ -4,7 +4,7 @@ import { Image } from "@/components/image/Image";
 export const WebBanner = () => {
     return (
         <section className="relative bg-gradient-to-b from-gradient-1 to-white w-full h-[90vh] flex flex-col items-stretch pt-component-lg">
-            <Banner layout="flex-row" className="h-[90vh] max-w-6xl mx-auto overflow-hidden gap-10">
+            <Banner layout="flex-row" className="flex h-[90vh] max-w-6xl mx-auto overflow-hidden gap-10">
                 <Banner.Item className="w-full flex flex-col px-8 lg:w-1/2 md:w-full">
                     <h1 className="text-6xl font-bold" >Discover the best food</h1>
                     <p className="text-lg font-bold py-4">Find the best food for you and your family</p>

@@ -6,9 +6,9 @@ type BannerProps = {
     children: React.ReactNode;
 }
 
-export const Banner = ({ layout = "flex-row", className = "", children }: BannerProps) => {
+export const Banner = ({ layout = "", className = "", children }: BannerProps) => {
     return (
-        <div className={`flex flex-col sm:flex-row ${layout} ${className}`}>
+        <div className={`${layout} ${className}`}>
             {children}
         </div>
 

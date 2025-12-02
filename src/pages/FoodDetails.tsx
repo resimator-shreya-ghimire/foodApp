@@ -43,24 +43,24 @@ const FoodDetails = () => {
   if (!data) return null;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 py-8 p-component-lg">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 p-component-lg">
-        <Banner className='bg-white rounded-2xl shadow-xl overflow-hidden mb-8'>
-          <Banner.Item className='w-1/2 relative'>
-            <div className="aspect-square rounded-xl overflow-hidden bg-gray-100 shadow-lg p-sm">
-              <Image
-                src={data?.image ?? ''}
-                alt={data?.name ?? 'Food item'}
-                className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
-              />
-            </div>
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 py-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-0 lg:px-8 p-component-lg">
+        <Banner
+          className="flex flex-col md:flex-row lg:flex-row bg-white rounded-2xl shadow-xl overflow-hidden mb-8"
+        >
+          <Banner.Item className='w-full md:w-1/2 lg:w-1/2 relative'>
+            <Image
+              src={data?.image ?? ''}
+              alt={data?.name ?? 'Food item'}
+              className="w-full h-[50vh] object-cover transform group-hover:scale-105 transition-transform duration-500"
+            />
             {data?.isVegetarian && (
               <div className="absolute top-4 right-4 bg-green-500 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
                 Vegetarian
               </div>
             )}
           </Banner.Item>
-          <Banner.Item>
+          <Banner.Item className='w-full md:w-1/2 lg:w-1/2'>
             <div className="flex flex-col justify-between">
               <div>
                 <div className="mb-2">

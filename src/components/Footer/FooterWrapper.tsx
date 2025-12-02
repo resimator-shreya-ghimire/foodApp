@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 import { useFooterList } from '@/utils/query';
 import { Footer } from '@/components/footer/Footer';
-import { IconRenderer } from './IconRenderer';
+import { IconRenderer } from '@/components/footer/IconRenderer';
 
 
 export const FooterWrapper = () => {

@@ -24,6 +24,7 @@ export const useFooterList = () => {
     return useSuspenseQuery<FooterFields[], Error>({
         queryKey: [QUERY_KEYS.FOOTERLINKS],
         queryFn: getFooterList,
+        refetchOnMount: true,
     }) ?? [];
 }
 
