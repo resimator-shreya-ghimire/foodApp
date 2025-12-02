@@ -8,7 +8,23 @@
     "price": 249,
     "isVegetarian": true,
     "rating": 4.6,
-    "reviews": []
+    "reviews": [
+      {
+        "user": "John Doe",
+        "comment": "This croissant is absolutely delicious! The buttery texture is perfection.",
+        "rating": 5
+      },
+      {
+        "user": "Jane Smith",
+        "comment": "I love the flaky texture of this croissant. It's a true treat!",
+        "rating": 4
+      },
+      {
+        "user": "Alice Johnson",
+        "comment": "The croissant is so fresh and flavorful. It's a must-try!",
+        "rating": 4
+      }
+    ]
   },
   {
     "id": 2,
@@ -19,7 +35,23 @@
     "price": 199,
     "isVegetarian": true,
     "rating": 4.7,
-    "reviews": []
+    "reviews": [
+      {
+        "user": "John Doe",
+        "comment": "This croissant is absolutely delicious! The buttery texture is perfection.",
+        "rating": 5
+      },
+      {
+        "user": "Jane Smith",
+        "comment": "I love the flaky texture of this croissant. It's a true treat!",
+        "rating": 4
+      },
+      {
+        "user": "Alice Johnson",
+        "comment": "The croissant is so fresh and flavorful. It's a must-try!",
+        "rating": 4
+      }
+    ]
   },
   {
     "id": 3,
@@ -30,7 +62,23 @@
     "price": 299,
     "isVegetarian": true,
     "rating": 4.5,
-    "reviews": []
+    "reviews": [
+      {
+        "user": "John Doe",
+        "comment": "This croissant is absolutely delicious! The buttery texture is perfection.",
+        "rating": 5
+      },
+      {
+        "user": "Jane Smith",
+        "comment": "I love the flaky texture of this croissant. It's a true treat!",
+        "rating": 4
+      },
+      {
+        "user": "Alice Johnson",
+        "comment": "The croissant is so fresh and flavorful. It's a must-try!",
+        "rating": 4
+      }
+    ]
   },
   {
     "id": 4,
@@ -41,7 +89,23 @@
     "price": 349,
     "isVegetarian": true,
     "rating": 4.8,
-    "reviews": []
+    "reviews": [
+      {
+        "user": "John Doe",
+        "comment": "This croissant is absolutely delicious! The buttery texture is perfection.",
+        "rating": 5
+      },
+      {
+        "user": "Jane Smith",
+        "comment": "I love the flaky texture of this croissant. It's a true treat!",
+        "rating": 4
+      },
+      {
+        "user": "Alice Johnson",
+        "comment": "The croissant is so fresh and flavorful. It's a must-try!",
+        "rating": 4
+      }
+    ]
   },
   {
     "id": 5,
