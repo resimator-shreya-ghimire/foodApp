@@ -71,8 +71,9 @@ const NavigationBar = () => {
       </div>
 
       {open && (
-        <div className="sm:hidden bg-white shadow-md px-4 py-4 flex flex-col gap-5">
+        <div className="sm:hidden bg-white shadow-md px-4 py-4 flex flex-col gap-5 rounded-lg border-solid border-white border-2">
           <div className="flex flex-col gap-2">
+            <span className="text-gray-700" onClick={() => navigate("/product")}>Product</span>
             <span className="text-gray-700" onClick={() => navigate("/cart")}>Cart</span>
             <p className="text-sm text-gray-500">Signed in as</p>
             <p className="font-medium">{user?.email}</p>

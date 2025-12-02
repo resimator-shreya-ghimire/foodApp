@@ -4,18 +4,37 @@ import { Actions } from "@/components/product-list/Actions";
 import { useModalStore } from "@/store/useModalStore";
 import { Button } from "@/components/button/Button";
 import { Empty } from "@/components/empty/Empty";
-import { Image } from "@/components/image/Image";
+import { useToastStore } from "@/store/toastStore";
 
 const Cart = () => {
     const { cartItems, clearCart } = useCart();
     const { showModal } = useModalStore();
+    const { showToast } = useToastStore();
+
+    const handleConfirmClearCart = () => {
+        try {
+            clearCart();
+            showToast('success', 'Cart cleared successfully');
+        } catch (error) {
+            showToast('error', 'Failed to clear cart');
+        }
+    }
+
+    const handleConfirmCheckout = () => {
+        try {
+            clearCart();
+            showToast('success', 'Checkout successful');
+        } catch (error) {
+            showToast('error', 'Failed to checkout');
+        }
+    }
 
     const handleClearCart = () => {
         if (!cartItems?.length) return;
         showModal({
             title: "Clear Cart",
             content: <p>Are you sure you want to clear your cart?</p>,
-            onConfirm: clearCart,
+            onConfirm: () => handleConfirmClearCart(),
             onCancel: () => { },
             confirmText: "Clear",
             cancelText: "Cancel",
@@ -27,7 +46,7 @@ const Cart = () => {
         showModal({
             title: "Checkout",
             content: <p>Are you sure you want to checkout?</p>,
-            onConfirm: clearCart,
+            onConfirm: () => handleConfirmCheckout(),
             onCancel: () => { },
             confirmText: "Checkout",
             cancelText: "Cancel",

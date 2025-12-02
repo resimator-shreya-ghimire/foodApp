@@ -26,7 +26,7 @@ export const Highlights = () => {
     const handleSubmit = (data: any) => {
         console.log(data);
         showToast('success', 'You have successfully subscribed to our newsletter');
-        setShowNewsLetter(data.email, false);
+        setShowNewsLetter(false);
     };
 
     return (
