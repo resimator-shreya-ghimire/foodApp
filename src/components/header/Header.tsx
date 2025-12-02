@@ -1,0 +1,10 @@
+
+import NavigationBar from '@/components/header/NavigationBar';
+
+export const Header = () => {
+  return (
+    <div className="w-full flex flex-col">
+      <NavigationBar />
+    </div>
+  );
+};
