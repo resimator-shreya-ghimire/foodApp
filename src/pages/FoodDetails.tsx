@@ -43,7 +43,7 @@ const FoodDetails = () => {
   if (!data) return null;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 py-4">
+    <div className="min-h-screen bg-linear-to-br from-gray-50 to-gray-100 py-4">
       <div className="max-w-7xl mx-auto px-4 sm:px-0 lg:px-8 p-component-lg">
         <Banner
           className="flex flex-col md:flex-row lg:flex-row bg-white rounded-2xl shadow-xl overflow-hidden mb-8"
